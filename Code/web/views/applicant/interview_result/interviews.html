@@ -1,0 +1,112 @@
+﻿ <div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title tabbable-line">
+                <div class="caption caption-md">
+                    <i class="icon-calendar font-red-mint" aria-hidden="true"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint">
+                        Interview Listing
+                    </span> 
+                </div>
+                <div class="actions">
+                    <button class="btn btn-secondary-outline" ng-click="isFilterFormOpen = !isFilterFormOpen">
+                        <i class="fa-filter fa"></i>
+                        Filter
+                    </button>
+
+                 
+                </div>
+            </div>
+            <div class="portlet-body">
+
+
+                <div class="table-responsive" ng-show="isFilterFormOpen" id="replyForm">
+                    <table class="table filter table-striped table-bordered table-hover dataTable no-footer" id="datatable_ajax" aria-describedby="datatable_ajax_info" role="grid">
+                        <thead>
+                            <tr role="row" class="heading">
+                                <th width="10%" class="sorting_disabled" rowspan="1" colspan="1"> Application no&nbsp;# </th>
+                                <th width="11%" class="sorting_disabled" rowspan="1" colspan="1">Interview Date </th>
+                                <th width="15%" class="sorting_disabled" rowspan="1" colspan="1"> School </th>
+                                <th width="10%" class="sorting_disabled" rowspan="1" colspan="1"> Grade </th>
+                                <th width="200" class="sorting_disabled" rowspan="1" colspan="1"> Student Name </th>
+                              
+                              
+                                <th width="18%" class="sorting_disabled" rowspan="1" colspan="1"> Actions </th>
+                            </tr>
+
+                            <tr role="row" class="filter">
+                                <td rowspan="1" colspan="1">
+                                    <input type="text" class="form-control form-filter input-sm" name="order_id" ng-model="filterObject.SearchObject.ApplicationNo">
+                                </td>
+                                <td rowspan="1" colspan="1">
+                                    <input date-range-picker class="form-control date-picker" type="text" name="dateRange" id="dateRange" ng-model="datePicker.date" />
+                                </td>
+
+                                <td rowspan="1" colspan="1">
+                                    <select name="product[tax_class]" class="form-control form-filter input-md" ng-disabled="disableSchool" ng-model="filterObject.SearchObject.SchoolId" ng-change="selectSchoool()" ng-options="school.SchoolId as school.SchoolName for school in schoolData">
+                                        <option value="">All Schools..</option>
+                                    </select>
+
+                                </td>
+                                <td rowspan="1" colspan="1">
+                                    <select name="grade" class="form-control form-filter input-md" ng-model="filterObject.SearchObject.GradeId">
+                                        <option value="">All Grade...</option>
+                                        <option ng-repeat="grade in gradeData" value="{{grade.GradeId}}">{{grade.GradeName}}</option>
+                                    </select>
+                                </td>
+
+                                <td rowspan="1" colspan="1">
+                                    <input type="text" class="form-control form-filter input-sm" name="order_customer_name" ng-model="filterObject.SearchObject.FirstName" ng-change="splitName()">
+                                </td>
+                             
+                             
+                                <td rowspan="1" colspan="1">
+                                    <button class="btn btn-sm green btn-outline filter-submit margin-bottom" ng-click="getList()">
+                                        <i class="fa fa-search"></i> Search
+                                    </button>
+                                    <button class="btn btn-sm red btn-outline filter-cancel" ng-click="clearSearch()">
+                                        <i class="fa fa-times"></i> Reset
+                                    </button>
+                                </td>
+
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+                <table ng-table="ApplicantsTable" class="table applicant-table">
+                    <tr ng-repeat="applicant in applicants track by $index">
+                        <td class="col-md-2" data-title="'Application no'" sortable="'ApplicationNo'" ng-click="go(applicant.StudentId)">
+                            {{applicant.ApplicationNo}}
+                        </td>
+                        <td class="col-md-2" data-title="'Interview Date'" sortable="'InterviewDate'" ng-click="go(applicant.StudentId)">
+                            {{applicant.InterviewDate|date:'d/M/yyyy'}}
+                        </td>
+                        
+                        <td class="col-md-1" data-title="'School '" sortable="'School.SchoolName'" ng-click="go(applicant.StudentId)">
+                            {{applicant.School.SchoolName}}
+                        </td>
+                        <td class="col-md-2" data-title="'Applicant Name'" sortable="'FirstName'" ng-click="go(applicant.StudentId)">
+                            {{applicant.ApplicantName}}
+                        </td>
+                        <td class="col-md-1" data-title="'Grade '" sortable="'Grade.GradeName'" ng-click="go(applicant.StudentId)">
+                            {{applicant.Grade.GradeName}}
+                        </td>
+                        <td class="col-md-2" data-title="'Joining Year'" sortable="'JoiningYear.YearName'" ng-click="go(applicant.StudentId)">
+                            {{applicant.JoiningYear.YearName}}
+                        </td>
+                       
+                         <td class="col-md-1" data-title="'Mobile'" sortable="'Father.Mobile'" ng-click="go(applicant.StudentId)">
+                            {{applicant.Father.Mobile}}<br>{{applicant.Mother.Mobile}}
+                        </td>
+                         
+                        <td data-title="'Status'" ng-click="go(applicant.StudentId)">
+                            <span class="btn btn-sm btn-outline grey-salsa">Set Interview Result</span>
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

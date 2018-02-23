@@ -1,0 +1,57 @@
+﻿<div class="row">
+
+    <div class="col-md-12">
+        <div class="portlet light">
+
+            <div class="portlet-title tabbable-line">
+                <div class="caption caption-md">
+                    <i class="icon-docs font-red-mint" aria-hidden="true"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint">
+                        New Applicants Report
+                    </span>
+                </div>
+
+                <div class="actions btn-set">
+                    <button ng-click="printNewApplicantsReport(reportForm.$valid,true)" class="btn btn-success" ng-disabled="submitted">
+                        <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Print
+                    </button>
+                    <button ng-click="printNewApplicantsReport(reportForm.$valid,false)" class="btn btn-success" ng-disabled="submitted">
+                        <i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="portlet-body add">
+                <form name="reportForm" novalidate class="form-horizontal form-row-seperated">
+
+                    <div class="form-body col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                School:
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-9">
+                                <select name="school" class="form-control form-filter input-md" ng-change="onSelected(ReportObj.SchoolId)" ng-disabled="disableSchool" ng-model="ReportObj.SchoolId" ng-options="school.SchoolId as school.SchoolName for school in schools" required>
+                                    <option value="">Select..</option>
+                                </select>
+                                <p class="font-red-mint error " ng-show="hasError( 'school', 'required' )">School is required</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                Grade :
+                            </label>
+                            <div class="col-md-9">
+                                <select name="grade" class="form-control form-filter input-md" ng-model="ReportObj.GradeId" ng-options="grade.GradeId as grade.GradeName for grade in grades">
+                                    <option value="">Select..</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

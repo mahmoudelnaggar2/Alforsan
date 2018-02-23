@@ -1,0 +1,49 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title tabbable-line">
+                <div class="caption caption-md">
+                    <i class="fa fa-tag font-red-mint" aria-hidden="true"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint">
+                        Discounts types
+                    </span>
+                </div>
+                <div class="actions">
+                    <a href="#/pages/discounts_type_add" class="btn btn-circle btn-info">
+                        <i class="fa fa-plus"></i>
+                        <span class="hidden-xs"> Add New </span>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="portlet-body add">
+
+                <table ng-table="discountsTypesTable" class="table">
+                    <tr ng-repeat="discountsType in discountsTypes">
+                        <td data-title="'Discount Name'">{{discountsType.DiscountName}}</td>
+                        <td data-title="'Discount Percentage'">{{discountsType.DiscountPercentage}}</td>
+                        <td data-title="'Actions'">
+
+                            <div class="action_hover_container stretch_btn_heights narrow_buttons">
+                                <a class="btn btn-outline btn-circle dark btn-sm black" ng-click="edit(discountsType.DiscountsTypeID)">
+                                    <i class="fa fa-edit"></i> Edit
+                                </a>
+
+                                <a href="javascript:;" class="btn btn-outline btn-circle dark btn-sm black" ng-click="delete(discountsType.DiscountsTypeID)">
+                                    <i class="fa fa-trash-o"></i> Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

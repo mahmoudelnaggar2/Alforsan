@@ -1,0 +1,60 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+
+            <div class="portlet-title">
+                <div class="caption caption-md">
+                    <i class="fa fa-money font-red-mint" aria-hidden="true"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint">
+                        Grade Fees
+                    </span>
+                </div>
+                <div class="actions btn-set">
+
+                    <select class="table-group-action-input form-control input-inline input-small input-sm">
+                        <option value="">Select School...</option>
+                        <option></option>       
+                    </select>
+                    <select class="table-group-action-input form-control input-inline input-sm">
+                        <option value="">Select Studying Year...</option>                     
+                        <option></option> 
+                    </select>
+                    <select class="table-group-action-input form-control input-inline  input-sm">
+                        <option value="">Select Joining Year...</option>
+                        <option></option>
+                    </select>
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-check" aria-hidden="true"></i> Save
+                    </button>
+                    <button ng-click="redirect()" type="button" class="btn red">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <form name="GradeFeeForm" novalidate>
+                    <table ng-table="gradesTable" class="table">
+                        <tr>
+                            <td width="20%">
+                                Grade Name
+                            </td>
+                            <td width="20%"></td>
+                        </tr>
+                        <tr>
+                            <td width="20%">                              
+                            </td>
+                            <td width="20%">
+                                <!--<input type="number" ng-model="Grade[grade.GradeId][fee.FeesTypeId]" ng-value="0" />-->
+                                <input type="number" ng-value="0" min="0" max="250000"
+                                    required/>
+                                <p class="font-red-mint error" ng-show="hasError('gradeFee{{grade.GradeId}}{{fee.FeesTypeId}}', 'required')">Fee is required</p>
+                                <p class="font-red-mint error" ng-show="hasError('gradeFee{{grade.GradeId}}{{fee.FeesTypeId}}','min')">Fee must be positive number</p>
+                                <p class="font-red-mint error" ng-show="hasError('gradeFee{{grade.GradeId}}{{fee.FeesTypeId}}','max')">Not Accept number</p>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

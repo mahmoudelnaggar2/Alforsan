@@ -1,0 +1,63 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title tabbable-line">
+                <div class="caption caption-md">
+                    <i class="fa fa-level-up font-red-mint" aria-hidden="true"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint">
+                        Upgrade Student
+                    </span>
+                </div>
+                <div class="actions btn-set pull-right">
+                    <select name="school" class="table-group-action-input form-control input-inline input-small input-sm" ng-disabled="disableSchool" ng-model="school" ng-change="updateGrade()" ng-options="school.SchoolId as school.SchoolName for school in schools">
+                             <option value="">Select School...</option>
+                    </select>
+                    <select name="grade" class="table-group-action-input form-control input-inline input-small input-sm" ng-model="grade" ng-change="getStudents()" ng-options="grade.GradeId as grade.GradeName for grade in grades">
+                             <option value="">Select Grade...</option>
+                    </select>
+                    <Button class="btn btn-info " ng-click="upgradeStudents()">
+                        <i class="fa fa-graduation-cap "></i>
+                        <span class="hidden-xs "> Upgrade Students</span>
+                    </Button>
+                    <button ng-click="cancel() " type="button " class="btn red ">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+            <p class="font-red-mint has-error" ng-show="checkflag">You should select at least one student</p>
+            <div class="portlet-body ">
+
+
+                <script type="text/ng-template " id="checkboxheader.html ">
+                    <label class="control control--checkbox student-check">
+                        <input type="checkbox" ng-model="selectedAll" ng-click="checkAll($event)">
+                        <div class="control__indicator "></div>
+                    </label>
+                </script>
+                <table ng-table="ApplicantsTable " class="table applicant-table ">
+                    <tr ng-repeat="student in students " ng-click="go(ai) ">
+                        <td data-header=" 'checkboxheader.html' ">
+                            <label class="control control--checkbox student-check">
+                                <input type="checkbox" ng-model="selectList[student.StudentId]" ng-click="checkBoxClick($event)">
+                                <div class="control__indicator "></div>
+                            </label>
+                        </td>
+
+                        <td data-title=" 'Student Name' ">
+                            {{student.ApplicantName}}
+                        </td>
+                        <td data-title=" 'School ' ">
+                            {{student.School.SchoolName}}
+                        </td>
+                        <td data-title=" 'Grade ' ">
+                            {{student.Grade.GradeName}}
+                        </td>
+                        <td data-title=" 'Balance ' ">
+                            {{student.Balance}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

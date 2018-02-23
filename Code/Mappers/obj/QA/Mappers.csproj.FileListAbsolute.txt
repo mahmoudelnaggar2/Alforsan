@@ -1,0 +1,5 @@
+E:\Projects\ForsanStudentAffairs\Code\Mappers\bin\QA\Mappers.dll
+E:\Projects\ForsanStudentAffairs\Code\Mappers\bin\QA\Helpers.dll
+E:\Projects\ForsanStudentAffairs\Code\Mappers\bin\QA\Model.dll
+E:\Projects\ForsanStudentAffairs\Code\Mappers\obj\QA\Mappers.csprojResolveAssemblyReference.cache
+E:\Projects\ForsanStudentAffairs\Code\Mappers\obj\QA\Mappers.dll

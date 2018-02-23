@@ -1,0 +1,109 @@
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="portlet light">
+
+            <div class="portlet-title tabbable-line">
+                <div class="caption caption-md">
+                    <i class="icon-docs font-red-mint" aria-hidden="true"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint">
+                       Interview Reports
+                    </span>
+                </div>
+
+                <div class="actions btn-set">
+
+
+                    <button ng-click="printInterviewReport(addForm.$valid)" class="btn btn-success" ng-disabled="submitted">
+                        <i class="fa fa-check" aria-hidden="true"></i> Print
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="portlet-body add">
+                <form name="addForm" novalidate class="form-horizontal form-row-seperated">
+
+                    <div class="form-body col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                School:
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-9">
+                                <select name="school" class="form-control form-filter input-md" ng-change="onSelected(InterviewObj.SchoolId)" ng-disabled="disableSchool" ng-model="InterviewObj.SchoolId" ng-options="school.SchoolId as school.SchoolName for school in schools" required>
+                                    <option value="">Select..</option>
+                                </select>
+                                <p class="font-red-mint error " ng-show="hasError( 'school', 'required' )">School is required</p>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                Grade :
+                            </label>
+                            <div class="col-md-9">
+                                <select name="grade" class="form-control form-filter input-md" ng-model="InterviewObj.GradeId" ng-options="grade.GradeId as grade.GradeName for grade in grades">
+                                    <option value="">Select..</option>
+                                </select>
+                                <p class="font-red-mint error " ng-show="hasError( 'grade', 'required' )">Grade is required</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                Status :
+                            </label>
+                            <div class="col-md-9">
+                                <select name="Status" class="form-control form-filter input-md" ng-model="InterviewObj.InterViewStatusID" ng-options="status.InterviewStatusId as status.InterviewStatusName for status in InterviewStatuses">
+                                    <option value="">Select..</option>
+                                </select>
+                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                Date From:
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-9" ng-controller="CalenderController as calenderVM">
+                                <p class="input-group">
+                                    <input type="text" name="Date" class="form-control" ng-model="InterviewObj.DateFrom" required readonly type="text" class="form-control" datepicker-popup="{{calenderVM.format}}" is-open="calenderVM.opened" min-date="calenderVM.minDate" datepicker-options="calenderVM.dateOptions"
+                                        close-text="Close" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="calenderVM.open($event)">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </button>
+                                    </span>
+                                </p>
+                                <p class="font-red-mint error" ng-show="hasError('Date', 'required' )">Date is required</p>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                Date To:
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="col-md-9" ng-controller="CalenderController as calenderVM">
+                                <p class="input-group">
+                                    <input type="text" name="Date" class="form-control" ng-model="InterviewObj.DateTo" required readonly type="text" class="form-control" datepicker-popup="{{calenderVM.format}}" is-open="calenderVM.opened" min-date="calenderVM.minDate" datepicker-options="calenderVM.dateOptions"
+                                        close-text="Close" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="calenderVM.open($event)">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                        </button>
+                                    </span>
+                                </p>
+                                <p class="font-red-mint error" ng-show="hasError('Date', 'required' )">Date is required </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

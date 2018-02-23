@@ -1,0 +1,4 @@
+E:\Projects\ForsanStudentAffairs\Code\Helpers\bin\Release\Helpers.dll
+E:\Projects\ForsanStudentAffairs\Code\Helpers\bin\Release\Helpers.pdb
+E:\Projects\ForsanStudentAffairs\Code\Helpers\obj\Release\Helpers.dll
+E:\Projects\ForsanStudentAffairs\Code\Helpers\obj\Release\Helpers.pdb

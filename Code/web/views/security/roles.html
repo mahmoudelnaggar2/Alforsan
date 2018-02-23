@@ -1,0 +1,44 @@
+﻿
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title tabbable-line">
+                <div class="caption caption-md">
+                    <i class="fa fa-list-ol font-red-mint" aria-hidden="true"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint">
+                        ROLES LISTING
+                    </span>
+                </div>
+                <div class="actions btn-set pull-right">
+                    <input class="form-control form-filter input-sm table-group-action-input input-inline input-small " name="" ng-model="filterObject.SearchObject.RoleName" ng-keyup="$event.keyCode == 13 ? getList() : null" placeholder="Filter by Role Name" />
+                    <a href="#/pages/role" class="btn btn-circle btn-info">
+                        <i class="fa fa-plus"></i>
+                        <span class="hidden-xs"> Add New </span>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="portlet-body add">
+                <table ng-table="tableParams" class="table table-striped table-bordered table-hover table-checkable order-column dataTable no-footer">
+                    <tr ng-repeat="row in $data track by row.RoleID">
+                        <td data-title="'Role Name'" sortable="'RoleName'">{{row.RoleName}}</td>
+                        <td data-title="'operations'">
+
+                            <div class="action_hover_container stretch_btn_heights narrow_buttons">
+                                <a class="btn btn-outline btn-circle dark btn-sm black" ng-click="editRow(row)">
+                                    <i class="fa fa-edit"></i> Edit
+                                </a>
+
+                                <a href="javascript:;" class="btn btn-outline btn-circle dark btn-sm black" ng-click="deleteRow(row)">
+                                    <i class="fa fa-trash-o"></i> Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

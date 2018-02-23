@@ -1,0 +1,54 @@
+﻿
+/* 
+    Author     : Haidy Shahin
+*/
+body{
+    background:white;
+}
+.loginBg{
+    background: url('../assets/global/img/bg2.jpg');
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    -webkit-filter: blur(25px);
+    -moz-filter: blur(25px);
+    -o-filter: blur(25px);
+    -ms-filter: blur(25px);
+    filter: blur(25px);
+    width:100%;
+    min-height: 800px;
+}
+.login div form {
+    background: rgba(255, 255, 255, 0.32)!important;
+}
+.logintitle {
+    color: #ffffff;
+    font-weight: 400;
+}
+.login div form {
+    margin-top: 0px;
+    background: white;
+    display: inline-block;
+    width: 100%;
+    max-width: 350px;
+    padding: 20px 40px;
+}
+.logoLogin img{
+    width: 150px!important;
+    margin-top:50px;
+}
+.loginbtn,.loginbtn:hover{
+    background: #f74f65;
+    color:white;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+.login-links, .login-links:hover {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+}

@@ -1,0 +1,27 @@
+﻿enTranslations.users = {
+    manage_user: 'Manage Users',
+    username: 'UserName',
+    username_required: 'UserName is required!',
+    fullname: 'Full Name',
+    password: 'Password',
+    type_a_password: 'Type a password',
+    password_required: 'Passwords is required!',
+    confirm_password: 'Confirm Password:',
+    confirm_pass: 'Confirm Password',
+    not_match_pass: 'Passwords does not match!',
+    user_role: 'Role:',
+    type_role: 'Type user role',
+    role_required: 'Role Is Required!',
+    user_active: 'Is Active:',
+    save_user: 'Save User',
+    see_users: 'See Users',
+    add_user: 'Add User',
+    list_users: 'Users Listing',
+    UserName: 'User Name',
+    FullName: 'Full Name',
+    Role: 'Role',
+    active: 'Active',
+    unique_admin: 'Only 1 system admin is allowed!',
+    fullname_required: 'Full Name is required!'
+
+}

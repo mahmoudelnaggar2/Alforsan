@@ -1,0 +1,192 @@
+﻿<div class="form-body col-xs-12 noPad">
+    <!--language-->
+    <div class="formCard clearfix">
+        <h4>Language spoken at home</h4>
+        <div class="form-group clearfix col-xs-12">
+            <div class="col-xs-12 noPad clearfix form-element"> 
+                <label class="control control--checkbox student-check"  ng-repeat="lang in Languages track by $index">
+                    {{lang.LanguageName}}
+                     <input type="checkbox" value="{{lang.LanguageId}}" name="lang{{lang.LanguageId}}" ng-model="applicant.StudentLanguages[lang.LanguageId]" 
+                            ng-checked="IsLanguageChecked(lang.LanguageId)" ng-click="checkBoxClick(lang.LanguageId,applicant.StudentLanguages[lang.LanguageId])" 
+                            class="ng-valid ng-dirty ng-valid-parse ng-touched">
+                    <div class="control__indicator"></div>
+                </label> 
+            </div>
+        </div>
+
+    </div>
+
+    <!--Family Status info-->
+    <div class=" formCard clearfix">
+        <h4>Family Status Info</h4>
+        <div class="form-group clearfix col-xs-12">
+            <div class="col-xs-12 noPad clearfix form-element">
+                <label class="col-xs-4 control-label">
+                    Do grandparents live with the family?
+                </label>
+                <div class="col-xs-8  noPad">
+                    <label class="control control--radio sibling-check disin">
+                        Yes
+                        <input type="radio" name="grandparent" data-ng-value="true" data-ng-model="applicant.GrandparentsLiveWithTheFamily" >
+                        <div class="control__indicator"></div>
+                    </label>
+                    <label class="control control--radio sibling-check disin">
+                        No
+                        <input type="radio" name="grandparent" data-ng-value="false" data-ng-model="applicant.GrandparentsLiveWithTheFamily" >
+                        <div class="control__indicator"></div>
+                    </label>
+                </div>
+            </div>
+            <div class="col-xs-12 noPad clearfix form-element">
+                <label class="col-xs-4 control-label">
+                    Status of Parents
+
+                </label>
+                <div class="col-xs-8  noPad">
+                    <label class="control control--radio sibling-check disin" ng-repeat="status in parentsStatuses">
+                        {{status.ParentStatusName}}
+                        <input type="radio" name="parentsStatus" data-ng-value="status.ParentStatusId"  data-ng-model="applicant.ParentStatusId" ng-click="updateStatus(status.ParentStatusId)">
+                        <div class="control__indicator"></div>
+                    </label>
+                </div>
+            </div>
+            <div class="col-xs-12 noPad clearfix form-element" ng-if="parentsStatus != ParentStatus.Married">
+                <label class="col-xs-4 control-label">
+                    If Parents are divorced or separated, who has the custody of the child?
+                </label>
+                <div class="col-xs-8  noPad">
+                    <label class="control control--radio sibling-check disin" ng-repeat="custody in custodys">
+                        {{custody.CustodyName}}
+                        <input type="radio" name="custody" data-ng-value="custody.CustodyId" data-ng-model="applicant.CustodyId">
+                        <div class="control__indicator"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class=" formCard clearfix">
+        <h4>Medical Info</h4>
+
+        <div class="form-group clearfix col-xs-12">
+            <div class="col-xs-12 noPad clearfix form-element">
+                <label class="col-xs-4 control-label">
+                    Does your child suffer from any medical issues?
+                </label>
+                <div class="col-xs-8  noPad">
+                    <label class="control control--radio sibling-check disin">
+                        Yes
+                        <input type="radio" name="medicalIssues" data-ng-value="true" data-ng-model="applicant.MedicalIssues" >
+                        <div class="control__indicator"></div>
+                    </label>
+                    <label class="control control--radio sibling-check disin">
+                        No
+                        <input type="radio" name="medicalIssues" data-ng-value="false" data-ng-model="applicant.MedicalIssues">
+                        <div class="control__indicator"></div>
+                    </label>
+                </div>
+            </div>
+            <div class="col-xs-12 noPad clearfix form-element">
+                <label class="col-xs-4 control-label">
+                    Is your child on regular medication?
+                </label>
+                <div class="col-xs-8  noPad">
+                    <label class="control control--radio sibling-check disin">
+                        Yes
+                        <input type="radio" name="medication" data-ng-value="true" data-ng-model="applicant.RegularMedication">
+                        <div class="control__indicator"></div>
+                    </label>
+                    <label class="control control--radio sibling-check disin">
+                        No
+                        <input type="radio" name="medication" data-ng-value="false" data-ng-model="applicant.RegularMedication">
+                        <div class="control__indicator"></div>
+                    </label>
+                </div>
+            </div>
+            <div class="col-xs-12 noPad clearfix " ng-show="applicant.RegularMedication">
+                <label class="col-xs-4 control-label">
+                    If yes, Please state current medications,allergies, chronic health concerns or any additional information.
+                </label>
+                <div class="col-xs-8  noPad">
+                    <textarea rows="4" class="form-control" name="medicalDescription" ng-model="applicant.CurrentMedication" placeholder=""></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=" formCard clearfix">
+        <h4>Transportation</h4>
+
+        <div class="form-group clearfix col-xs-12">
+            <div class="col-xs-12 noPad clearfix form-element">
+                <label class="col-xs-4 control-label">
+                    will your child use the school transportantion service?
+                </label>
+                <div class="col-xs-8  noPad">
+                    <label class="control control--radio sibling-check disin">
+                        Yes
+                        <input type="radio" name="transportantion" data-ng-value="true" data-ng-model="applicant.Transportation">
+                        <div class="control__indicator"></div>
+                    </label>
+                    <label class="control control--radio sibling-check disin">
+                        No
+                        <input type="radio" name="transportantion" data-ng-value="false" data-ng-model="applicant.Transportation">
+                        <div class="control__indicator"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class=" formCard clearfix">
+    <h4>Emergency Infromation</h4>
+    <label class="col-xs-12 control-label">In case of emergency, who would you like the school to contact, Other than the Mother & Father?</label>
+    <div class="form-group clearfix col-xs-12 siblingCont" style="height: initial;">
+        <div>
+            <fieldset class="clearfix" data-ng-repeat="emergency in contacts track by $index">
+                <div class="col-sm-4 col-xs-12 noPad clearfix form-element">
+
+                    <label class="col-sm-5 col-xs-12 control-label">
+                        Contact Name
+                    </label>
+                    <div class="col-sm-7 col-xs-12 ">
+                        <input type="text" class="form-control" name="contactName{{$index}}" placeholder="Contact Name" ng-model="emergency.ContactName">
+                    </div>
+                </div>
+
+                <div class="col-sm-4 col-xs-12  noPad clearfix form-element">
+                    <label class="col-sm-5 col-xs-12 control-label">
+                        Relationship
+                    </label>
+                    <div class="col-sm-7 col-xs-12 ">
+                        <input type="text" class="form-control" name="relationship{{$index}}" placeholder="Relationship" ng-model="emergency.Relationship">
+
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12 noPad clearfix form-element">
+                    <label class="col-xs-12 col-sm-4 control-label">
+                        Mobile No.
+
+                    </label>
+                    <div class="col-sm-7 col-xs-12 ">
+                        <input type="tel" class="form-control" name="contactMobile{{$index}}" placeholder="Mobile No." ng-model="emergency.MobileNumber" ng-pattern="mobilePattern">
+                        <p class="font-red-mint error " ng-show="hasError( 'contactMobile{{$index}}', 'pattern','additionalForm') ">Mobile Number is not valid</p>
+                    </div>
+                    <div class=" col-sm-1 col-xs-12" ng-class="{'removeBtn' : emergencyRemoved}">
+                        <button class="remove clearfix btn red" ng-click="remove('contacts',$index)">x</button>
+                    </div>
+                </div>
+
+
+            </fieldset>
+            <div class="row add-sibling">
+                <button class="addfields clearfix btn blue" ng-class="{'disabled':emergencyDisabled}" ng-click="addNew('contacts',3)">Add New Contact</button>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+
+    </div>
+    <div style="clear:both;"></div>
+</div>

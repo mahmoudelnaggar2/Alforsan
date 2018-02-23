@@ -1,0 +1,370 @@
+﻿<div class="form-body col-xs-12 noPad" id="basicInfo">
+    <!--Admission info-->
+    <div class="formCard clearfix"> 
+        <div class="form-group clearfix col-xs-12" ng-show="applicant.StudentCode!=undefined"  >
+            <div class="col-sm-2  noPad clearfix">
+                <h4>
+                    Student Code
+                </h4>
+            </div>
+
+                <div class="col-sm-10 noPad clearfix">
+                    {{applicant.StudentCode}}
+
+
+                </div>
+
+            </div>  
+
+            <h4>Admission info</h4>
+            <div class="form-group clearfix col-xs-12">
+                <div class="col-sm-4 col-xs-12 form-element noPad clearfix">
+                    <label class="col-xs-5 control-label">
+                        Application no
+                        <span class="required"> * </span>
+                    </label>
+                    <div class="col-xs-7  noPad">
+                        <input type="number" class="form-control" name="ApplicationNo" placeholder="Application no" ng-model="applicant.ApplicationNo" ng-change="isNumbervalid(applicant.ApplicationNo)" required>
+                        <p class="font-red-mint error" ng-show="validNumber">Application number is duplicated</p>
+                        <p class="font-red-mint error" ng-show="hasError('ApplicationNo', 'required' )">Application Number is required</p>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 col-xs-12 form-element noPad clearfix">
+                    <label class="col-xs-5 control-label">
+                        Application date
+                        <span class="required"> * </span>
+                    </label>
+                    <div class="col-xs-7  noPad" ng-controller="CalenderController as calenderVM">
+                        <p class="input-group">
+                            <input type="text" name="ApplicationDate" ng-model="applicant.ApplicationDate" required readonly type="text" class="form-control" datepicker-popup="{{calenderVM.format}}" is-open="calenderVM.opened" min-date="calenderVM.minDate" datepicker-options="calenderVM.dateOptions"
+                                   close-text="Close" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="calenderVM.open($event)">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                        </p>
+                        <p class="font-red-mint error" ng-show="hasError('ApplicationDate', 'required' )">Application date is required</p>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12 form-element noPad clearfix">
+                    <label class="col-xs-5 control-label">
+                        Grade applying for
+                        <span class="required"> * </span>
+                    </label>
+                    <div class="col-xs-7 noPad">
+                        <select name="grade" class="form-control form-filter input-md" ng-model="applicant.GradeId" ng-options="grade.GradeId as grade.GradeName for grade in studentGrades" required>
+                            <option value="">Select..</option>
+                        </select>
+                        <p class="font-red-mint error " ng-show="hasError( 'grade', 'required' )">Grade is required</p>
+                    </div>
+                </div>
+            </div>
+       
+           <div class="form-group clearfix col-xs-12">
+            <div class="col-sm-4 col-xs-12 form-element noPad clearfix">
+                <label class="col-xs-5 control-label">
+                    Joining Year 
+                    <span class="required"> * </span>
+                </label>
+                <div class="col-xs-7  noPad"> 
+                    <select name="joiningYear" class="form-control form-filter input-md" required ng-model="applicant.JoiningYearId" ng-options="year.YearId as year.YearName for year in years">
+                        <option value="">Select..</option>
+                    </select>
+                    <p class="font-red-mint error " ng-show="hasError( 'joiningYear', 'required' )">Joining Year is required</p>
+
+                </div>
+            </div>
+
+             
+        </div>
+      
+      </div>
+
+</div>
+
+<!--applicant info-->
+<div class="formCard clearfix">
+    <h4 ng-show="applicant.StudentCode==undefined">Applicant info</h4>
+    <h4 ng-show="applicant.StudentCode!=undefined">Student info</h4>
+
+    <div class="form-group clearfix col-xs-12">
+        <div class="col-sm-4 col-xs-12 noPad clearfix form-element">
+            <label class="col-xs-5 control-label">
+                    First Name
+                    <span class="required"> * </span>
+                </label>
+            <div class="col-xs-7  noPad">
+                <input type="text" class="form-control" name="FirstName" placeholder="First Name" ng-model="applicant.FirstName" ng-disabled="disableName" required>
+                <p class="font-red-mint error" ng-show="hasError('FirstName', 'required' )">First Name is required</p>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 noPad clearfix form-element">
+            <label class="col-xs-5 control-label">
+                    Middle Name
+                    <span class="required"> * </span>
+                </label>
+            <div class="col-xs-7  noPad">
+                <input type="text" class="form-control" name="MiddleName" placeholder="Middle Name" ng-model="applicant.MiddleName" ng-disabled="disableName" required>
+                <p class="font-red-mint error" ng-show="hasError('MiddleName', 'required' )">Middle Name is required</p>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 noPad clearfix form-element">
+            <label class="col-xs-5 control-label">
+                    Family Name
+                    <span class="required"> * </span>
+                </label>
+            <div class="col-xs-7  noPad">
+                <input type="text" class="form-control" name="FamilyName" placeholder="Family Name" ng-model="applicant.FamilyName" ng-disabled="disableName" required>
+                <p class="font-red-mint error" ng-show="hasError('FamilyName', 'required' )">Family Name is required</p>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="col-sm-4 col-xs-12 noPad clearfix form-element">
+            <label class="col-xs-5 control-label">
+                    Date of Birth
+                    <span class="required"> * </span>
+                </label>
+            <!--<div class="col-xs-7  noPad"> 
+                <input  my-date 
+                       name="DateOfBirth"class="form-control"
+                       ng-model="applicant.DateOfBirth" required>
+                <p class="font-red-mint error " ng-show="hasError( 'BirthPlace', 'required' ) ">Date of birth is required</p>
+            </div>-->
+            <div class="col-xs-7  noPad" ng-controller="CalenderController as calenderVM">
+                <p class="input-group"> 
+                    <input type="text" class="form-control"  name="DateOfBirth" ng-model="applicant.DateOfBirth" required readonly   datepicker-popup="{{calenderVM.format}}" is-open="calenderVM.opened" min-date="calenderVM.minDate" datepicker-mode="'year'"
+                        close-text="Close" />
+                    <span class=" input-group-btn ">
+                            <button type="button" class="btn btn-default" ng-click="calenderVM.open($event)">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                </p>
+                <p class="font-red-mint error " ng-show="hasError( 'DateOfBirth', 'required' ) ">Date of birth is required</p>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 noPad clearfix form-element ">
+            <label class="col-xs-5 control-label ">
+                    Place of Birth
+                    <span class="required "> * </span>
+                </label>
+            <div class="col-xs-7 noPad ">
+                <input type="text " class="form-control " name="BirthPlace" placeholder="Place of Birth " ng-model="applicant.PlaceOfBirth " required>
+                <p class="font-red-mint error " ng-show="hasError( 'BirthPlace', 'required' ) ">Place of birth is required</p>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 noPad clearfix form-element ">
+            <label class="col-xs-5 control-label ">
+                    Nationality
+                    <span class="required "> * </span>
+                </label>
+            <div class="col-xs-7 noPad ">
+                <select name="nation" class="form-control form-filter input-md" ng-model="applicant.NationalityId" ng-options="nationality.NationalityId as nationality.NationalityName for nationality in nationalities" required>
+                        <!-- <option value="">Select..</option> -->
+                 </select>
+                <p class="font-red-mint error " ng-show="hasError( 'nation', 'required' )">Nationality is required</p>
+            </div>
+        </div>
+        <div style="clear:both; "></div>
+        <div class="col-sm-4 col-xs-12 noPad clearfix form-element ">
+            <label class="col-xs-5 control-label ">
+                    Religion
+                    <span class="required "> * </span>
+                </label>
+            <div class="col-xs-7 noPad ">
+                <select name="religion" class="form-control form-filter input-md" ng-model="applicant.ReligionId" ng-options="religion.ReligionId as religion.ReligionName for religion in religions" required>
+                        <!-- <option value="">Select..</option> -->
+                 </select>
+                <p class="font-red-mint error" ng-show="hasError( 'religion', 'required' )">Religion is required</p>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 noPad clearfix form-element ">
+            <label class="col-xs-5 control-label ">
+                    Gender
+                    <span class="required "> * </span>
+                </label>
+            <div class="col-xs-7 noPad ">
+                <select name="gender" class="form-control form-filter input-md" ng-model="applicant.GenderId" ng-options="gender.GenderId as gender.GenderName for gender in genders" required>
+                        <option value="">Select..</option>
+                 </select>
+                <p class="font-red-mint error" ng-show="hasError( 'gender', 'required' )">Gender is required</p>
+            </div>
+        </div>
+        <div class="col-sm-4 col-xs-12 noPad clearfix form-element ">
+            <label class="col-xs-5 control-label ">
+                    Previous School
+                </label>
+            <div class="col-xs-7 noPad ">
+                <input type="text " class="form-control " name="previous" placeholder="Previous School" ng-model="applicant.PreviousSchool">
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class=" formCard clearfix ">
+    <h4>Contact info</h4>
+
+    <div class="form-group clearfix col-xs-12 ">
+        <div class="row ">
+            <h4 class="subtitle ">Father</h4>
+            <div class="col-sm-4 col-xs-12 clearfix form-element ">
+                <label class="col-xs-5 control-label ">
+                        Name
+                        <span class="required "> * </span>
+                    </label>
+                <div class="col-xs-7 noPad ">
+                   
+                    <input type="text" value=" applicant.MiddleName" class="form-control" name="fatherName" placeholder="Name " ng-model="applicant.Father.Name " required>
+                    <p class="font-red-mint error " ng-show="hasError( 'fatherName', 'required' ) ">Father name is required</p>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-12 clearfix form-element ">
+                <label class="col-xs-5 control-label ">
+                        Mobile no
+                        <span class="required "> * </span>
+                    </label>
+                <div class="col-xs-7 noPad ">
+                    <input type="tel " class="form-control " name="fatherMobile" placeholder="Mobile no " ng-model="applicant.Father.Mobile " ng-pattern="mobilePattern" required>
+                    <p class="font-red-mint error " ng-show="hasError( 'fatherMobile', 'required' ) ">Mobile Number is required</p>
+                    <p class="font-red-mint error " ng-show="hasError( 'fatherMobile', 'pattern' ) ">Mobile Number is not valid</p>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-12 clearfix form-element ">
+                <label class="col-xs-5 control-label ">
+                        Home no
+                         
+                    </label>
+                <div class="col-xs-7 noPad ">
+                    <input type="tel " class="form-control " name="fatherHomeNo" placeholder="Home no " ng-change="homeNo(applicant.Father.HomeNumber)" ng-pattern="mobilePattern" ng-model="applicant.Father.HomeNumber"  >
+                     <p class="font-red-mint error " ng-show="hasError( 'fatherHomeNo', 'pattern' ) ">Home Number is not valid</p>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-12 clearfix form-element ">
+                <label class="col-xs-5 control-label ">
+                        E-mail
+                    </label>
+                <div class="col-xs-7 noPad ">
+                    <input type="email " class="form-control " name="fatheremail" placeholder="E-mail " ng-model="applicant.Father.Email">
+                    <p class="font-red-mint error " ng-show="hasError( 'fatheremail', 'email' ) ">Email is not valid</p>
+                </div>
+            </div>
+        </div>
+        <div class="row ">
+            <h4 class="subtitle ">Mother</h4>
+            <div class="col-sm-4 col-xs-12 clearfix form-element ">
+                <label class="col-xs-5 control-label ">
+                        Name
+                         <span class="required "> * </span> 
+                    </label>
+                <div class="col-xs-7 noPad ">
+                    <input type="text " class="form-control " name="motherName" placeholder="Name " ng-model="applicant.Mother.Name" required>
+                    <p class="font-red-mint error " ng-show="hasError( 'motherName', 'required' ) ">Mother Name is required</p>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-12 clearfix form-element ">
+                <label class="col-xs-5 control-label ">
+                        Mobile no
+                        <span class="required "> * </span>
+                    </label>
+                <div class="col-xs-7 noPad ">
+                    <input type="tel" class="form-control " name="motherMobile" placeholder="Mobile no " ng-model="applicant.Mother.Mobile" ng-pattern="mobilePattern" required>
+                    <p class="font-red-mint error " ng-show="hasError( 'motherMobile', 'required' ) ">Mobile number is required</p>
+                    <p class="font-red-mint error " ng-show="hasError( 'motherMobile', 'pattern' ) ">Mobile Number is not valid</p>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-12 clearfix form-element ">
+                <label class="col-xs-5 control-label ">
+                        Home no
+                         
+                    </label>
+                <div class="col-xs-7 noPad ">
+                    <input type="tel " class="form-control " name="motherHomeNo" placeholder="Home no " ng-model="applicant.Mother.HomeNumber" ng-pattern="mobilePattern"  >
+                     <p class="font-red-mint error " ng-show="hasError( 'motherHomeNo', 'pattern' ) ">Home number is not valdid</p>
+
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-12 clearfix form-element ">
+                <label class="col-xs-5 control-label ">
+                        E-mail
+                    </label>
+                <div class="col-xs-7 noPad ">
+                    <input type="email" class="form-control " name="motheremail" placeholder="E-mail " ng-model="applicant.Mother.Email">
+                    <p class="font-red-mint error " ng-show="hasError( 'motheremail', 'email' ) ">Email is not valid</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class=" formCard clearfix ">
+    <h4>Siblings Info</h4>
+    <label class="control control--checkbox sibling-check ">
+            Studen Has siblings
+            <input type="checkbox" value="minimum" ng-checked="false" ng-model="siblingCheck" ng-click="checkSibling($event)">
+            <div class="control__indicator "></div>
+        </label>
+    <div class="form-group clearfix col-xs-12 siblingCont" ng-hide="!siblingCheck" style="height: initial;">
+        <div>
+            <fieldset class="clearfix" data-ng-repeat="sibling in siblings track by $index">
+                <div class="col-sm-4 col-xs-12 noPad clearfix form-element">
+                    <label class="col-xs-5 control-label ">
+                            School
+                            <span class="required "> * </span>
+                        </label>
+                    <div class="col-xs-7 noPad ">
+                        <select name="siblingSchool{{$index}}" class="form-control form-filter input-md" ng-change="updateGrade(sibling,$index)" ng-model="sibling.SchoolId" ng-options="school.SchoolId as school.SchoolName for school in schools" ng-required=siblingCheck>
+                             <option value="">Select..</option>
+                        </select>
+                        <p class="font-red-mint error " ng-show="hasError( 'siblingSchool{{$index}}', 'required' )">School is required</p>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12 noPad clearfix form-element">
+                    <label class="col-xs-4 control-label ">
+                            Grade
+                            <span class="required "> * </span>
+                        </label>
+                    <div class="col-xs-7 noPad ">
+                        <select name="siblingGrade{{$index}}" class="form-control form-filter input-md" ng-model="sibling.GradeId" ng-change="updateSiblingNames(sibling,$index)" ng-options="grade.GradeId as grade.GradeName for grade in  grades[{{$index}}] " ng-required=siblingCheck>
+                             <option value="">Select..</option>
+                        </select>
+                        <p class="font-red-mint error " ng-show="hasError( 'siblingGrade{{$index}}', 'required' )">Grade is required</p>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12 noPad clearfix form-element">
+
+                    <label class="col-xs-4 noPad control-label">
+                            Name
+                            <span class="required"> * </span>
+                        </label>
+                    <div class="col-xs-6 noPad">
+                        <ui-select ng-model="sibling.StudentId" theme="bootstrap" name="siblingName{{$index}}" ng-required=siblingCheck>
+                            <ui-select-match placeholder="select... ">{{$select.selected.ApplicantName}}
+                                <!-- <button type="button" class="clear" ng-click="clearGrade($event,$select,$index)"> <span class="glyphicon glyphicon-remove"></span></button> -->
+                            </ui-select-match>
+                            <ui-select-choices repeat="s.StudentId as s in allSiblings[$index] | filter: {ApplicantName:$select.search}">
+                                <div ng-bind-html="s.ApplicantName | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <p class="font-red-mint error" ng-show="hasError( 'siblingName{{$index}}', 'required' )">Sibling name is required</p>
+                    </div>
+                    <div class=" col-xs-2   "    >
+                        <button class="remove clearfix btn red " ng-click="remove('siblings',$index) ">x</button>
+                    </div>
+                </div>
+
+
+            </fieldset>
+            <div class="row add-sibling ">
+                <button class="addfields clearfix btn blue " ng-class="{ 'disabled':siblingDisabled} " ng-click="addNew( 'siblings',5) ">Add New Sibling</button>
+            </div>
+            <div style="clear:both; "></div>
+        </div>
+
+    </div>
+    <div style="clear:both; "></div>
+</div>
+</div>

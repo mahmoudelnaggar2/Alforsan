@@ -1,0 +1,250 @@
+﻿<div class="form-body col-xs-12 noPad clearfix">
+    <!--father info-->
+    <div class=" formCard clearfix">
+        <h4>Father</h4>
+        <div class="form-group clearfix col-xs-12">
+            <div class="row">
+                <div class="col-sm-4 col-xs-12 form-element clearfix">
+                    <label class="col-xs-4 control-label">
+                        Name
+                    </label>
+                    <div class="col-xs-8  noPad">
+                        <label class=" control-label noPad">{{applicant.Father.Name}}</label>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12 form-element clearfix">
+                    <label class="col-xs-4 control-label">
+                        Mobile
+                    </label>
+                    <div class="col-xs-8 form-element noPad">
+                        <label class=" control-label">{{applicant.Father.Mobile}}</label>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12 form-element clearfix">
+                    <label class="col-xs-4 control-label">
+                        Email
+                    </label>
+                    <div class="col-xs-8  noPad">
+                        <label class=" control-label">{{applicant.Father.Email}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-xs-12 form-element  clearfix">
+                    <label class="col-xs-4 control-label">
+                        Home No.
+                    </label>
+                    <div class="col-xs-8  noPad">
+                        <label class=" control-label">{{applicant.Father.HomeNumber}}</label>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12 form-element clearfix">
+                    <label class="col-xs-4 control-label">
+                        Nationality
+                         <span class="required"> * </span>
+                    </label>
+                    <div class="col-xs-8 noPad">
+                        <select name="fatherNationality" class="form-control form-filter input-md" id="familyInfo" ng-model="applicant.Father.NationalityId" ng-options="nationality.NationalityId as nationality.NationalityName for nationality in nationalities" required>
+                             <option value="">Select..</option>
+                        </select>
+                        <p class="font-red-mint error" ng-show="hasError('fatherNationality', 'required','FamilyForm'  )">Father's Nationality is required</p>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12 form-element clearfix">
+                    <label class="col-xs-4 control-label">
+                        ID No.
+                        <span class="required"> * </span>
+                    </label>
+                    <div class="col-xs-8  noPad">
+                        <input type="text" class="form-control" ng-model="applicant.Father.IdNumber" id="familyInfo" placeholder="ID No." name="FatherIDNo" required>
+                    </div>
+                    <p class="font-red-mint error" ng-show="hasError('FatherIDNo', 'required','FamilyForm'  )">Father's ID number is required</p>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-4 col-xs-12 form-element clearfix">
+                    <label class="col-xs-4 control-label">
+                        Occupation
+                      <span class="required"> * </span>
+                    </label>
+                    <div class="col-xs-8  noPad">
+                        <input type="text" class="form-control" placeholder="Occupation / Profession" id="familyInfo" name="fatherOccupation" ng-model="applicant.Father.Occupation" required>
+                    </div>
+                    <p class="font-red-mint error" ng-show="hasError('fatherOccupation', 'required','FamilyForm'  )">Father's occupation is required</p>
+                </div>
+                <div class="col-sm-4 col-xs-12 form-element clearfix">
+                    <label class="col-xs-4 control-label">
+                        Employer
+                        <span class="required"> * </span>                        
+                    </label>
+                    <div class="col-xs-8  noPad">
+                        <input type="text" class="form-control" placeholder="Employer" name="fatherEmployer" id="familyInfo" ng-model="applicant.Father.Employer" required>
+                    </div>
+                    <p class="font-red-mint error" ng-show="hasError('fatherEmployer', 'required','FamilyForm'  )">Father's Employer is required</p>
+                </div>
+            </div>
+            <div class="row">
+                <h4 class="subtitle">Educational Background</h4>
+                <div class="col-sm-4 col-xs-12 form-element clearfix">
+                    <label class="col-xs-4 control-label">
+                        School
+                        <span class="required"> * </span>                        
+                    </label>
+                    <div class="col-xs-8  noPad">
+                        <input type="text" class="form-control" name="fatherSchool" placeholder="School" id="familyInfo" ng-model="applicant.Father.School" required>
+                    </div>
+                    <p class="font-red-mint error" ng-show="hasError('fatherSchool', 'required','FamilyForm'  )">Father's school is required</p>
+
+                </div>
+                <div class="col-sm-4 col-xs-12 form-element clearfix">
+                    <label class="col-xs-4 control-label">
+                        University
+                        <span class="required"> * </span>                        
+                    </label>
+                    <div class="col-xs-8  noPad">
+                        <input type="text" class="form-control" name="fatherUniversity" placeholder="University" id="familyInfo" ng-model="applicant.Father.University" required>
+                    </div>
+                    <p class="font-red-mint error" ng-show="hasError('fatherUniversity', 'required','FamilyForm'  )">Father's university is required</p>
+
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-xs-12 form-element clearfix textarea-margin">
+                    <label class="col-xs-12 control-label">
+                        Home Address
+                        <span class="required"> * </span>
+                    </label>
+                    <div class="col-xs-12">
+                        <textarea rows="2" class="form-control" name="fatherHomeAddress" placeholder="" ng-model="applicant.Father.HomeAddress" id="familyInfo" ng-change="Address(applicant.Father.HomeAddress)" required></textarea>
+                        <p class="font-red-mint error" ng-show="hasError('fatherHomeAddress', 'required','FamilyForm'  )">Father's home address is required</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div style="clear:both;"></div>
+    <!--father info-->
+    <div class=" formCard clearfix">
+        <h4>Mother</h4>
+        <div class="form-group clearfix col-xs-12">
+            <div class="row">
+                <div class="col-sm-4 col-xs-12 form-element clearfix">
+                    <label class="col-xs-4 control-label">
+                        Name
+                    </label>
+                    <div class="col-xs-8  noPad">
+                        <label class=" control-label noPad">{{applicant.Mother.Name}}</label>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12 form-element clearfix">
+                    <label class="col-xs-4 control-label">
+                        Mobile
+                    </label>
+                    <div class="col-xs-8 form-element noPad">
+                        <label class=" control-label">{{applicant.Mother.Mobile}}</label>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12 form-element clearfix">
+                    <label class="col-xs-4 control-label">
+                        Email
+                    </label>
+                    <div class="col-xs-8  noPad">
+                        <label class=" control-label">{{applicant.Mother.Email}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-xs-12 form-element  clearfix">
+                    <label class="col-xs-4 control-label">
+                        Home No.
+                    </label>
+                    <div class="col-xs-8  noPad">
+                        <label class=" control-label">{{applicant.Mother.HomeNumber}}</label>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12 form-element clearfix">
+                    <label class="col-xs-4 control-label">
+                        Nationality
+                        <span class="required"> * </span>
+                    </label>
+                    <div class="col-xs-8 noPad">
+                        <select name="motherNationality" class="form-control form-filter input-md" id="familyInfo" ng-model="applicant.Mother.NationalityId" ng-options="nationality.NationalityId as nationality.NationalityName for nationality in nationalities" required>
+                               <option value="">Select..</option>
+                       </select>
+                        <p class="font-red-mint error" ng-show="hasError('motherNationality', 'required','FamilyForm'  )">Mother's nationality is required</p>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12 form-element clearfix">
+                    <label class="col-xs-4 control-label">
+                        ID No.
+                     <span class="required"> * </span>                        
+                    </label>
+                    <div class="col-xs-8  noPad">
+                        <input type="text" ng-model="applicant.Mother.IdNumber" class="form-control" id="familyInfo" name="MotherIDNo" placeholder="ID No." required>
+                    </div>
+                    <p class="font-red-mint error" ng-show="hasError('MotherIDNo', 'required','FamilyForm')">Mother's ID number is required</p>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-4 col-xs-12 form-element clearfix">
+                    <label class="col-xs-4 control-label">
+                        Occupation
+                    </label>
+                    <div class="col-xs-8  noPad">
+                        <input type="text" class="form-control" placeholder="Occupation / Profession" name="motherOccupation" ng-model="applicant.Mother.Occupation">
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12 form-element clearfix">
+                    <label class="col-xs-4 control-label">
+                        Employer
+                    </label>
+                    <div class="col-xs-8  noPad">
+                        <input type="text" class="form-control" placeholder="Employer" name="motherEmployer" ng-model="applicant.Mother.Employer">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h4 class="subtitle">Educational Background</h4>
+                <div class="col-sm-4 col-xs-12 form-element clearfix">
+                    <label class="col-xs-4 control-label">
+                        School
+                    </label>
+                    <div class="col-xs-8  noPad">
+                        <input type="text" class="form-control" name="motherSchool" placeholder="School" ng-model="applicant.Mother.School">
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12 form-element clearfix">
+                    <label class="col-xs-4 control-label">
+                        University
+                    </label>
+                    <div class="col-xs-8  noPad">
+                        <input type="text" class="form-control" name="motherUniversity" placeholder="University" ng-model="applicant.Mother.University">
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-xs-12 form-element clearfix textarea-margin">
+                    <label class="col-xs-12 control-label">
+                        Home Address
+                                             <span class="required"> * </span>                        
+                    </label>
+                    <div class="col-xs-12">
+                        <textarea rows="2" class="form-control" name="motherHomeAddress" id="familyInfo" placeholder="" ng-model="applicant.Mother.HomeAddress" required></textarea>
+                    </div>
+                    <p class="font-red-mint error" ng-show="hasError('motherHomeAddress', 'required','FamilyForm' )">Mother's home address is required</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

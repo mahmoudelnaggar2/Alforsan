@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="E:\Projects\ForsanStudentAffairs\Code\WebAPI\obj\QA\Package\PackageTmp" />
+  <setAcl path="E:\Projects\ForsanStudentAffairs\Code\WebAPI\obj\QA\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="E:\Projects\ForsanStudentAffairs\Code\WebAPI\obj\QA\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>

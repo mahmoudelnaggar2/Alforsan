@@ -1,0 +1,9 @@
+E:\Projects\ForsanStudentAffairs\Code\Mappers\bin\Release\Mappers.dll
+E:\Projects\ForsanStudentAffairs\Code\Mappers\bin\Release\Mappers.pdb
+E:\Projects\ForsanStudentAffairs\Code\Mappers\bin\Release\Helpers.dll
+E:\Projects\ForsanStudentAffairs\Code\Mappers\bin\Release\Model.dll
+E:\Projects\ForsanStudentAffairs\Code\Mappers\bin\Release\Helpers.pdb
+E:\Projects\ForsanStudentAffairs\Code\Mappers\bin\Release\Model.pdb
+E:\Projects\ForsanStudentAffairs\Code\Mappers\obj\Release\Mappers.csprojResolveAssemblyReference.cache
+E:\Projects\ForsanStudentAffairs\Code\Mappers\obj\Release\Mappers.dll
+E:\Projects\ForsanStudentAffairs\Code\Mappers\obj\Release\Mappers.pdb

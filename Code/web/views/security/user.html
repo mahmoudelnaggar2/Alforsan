@@ -1,0 +1,85 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+
+            <div class="portlet-title tabbable-line">
+                <div class="caption caption-md">
+                    <i class="icon-user font-red-mint" aria-hidden="true"></i> <span class="caption-subject font-blue-madison bold uppercase font-red-mint">Manage User</span>
+                </div>
+                <div class="actions btn-set">
+                    <button class="btn btn-secondary-outline" ng-click="reset()">
+                        <i class="fa fa-reply"></i> Reset
+                    </button>
+                    <button type="submit" class="btn btn-success" ng-disabled="submitted" ng-click="save()">
+                        <i class="fa fa-check" aria-hidden="true"></i> Save
+                    </button>
+                     <button ng-click="redirect()" type="button" class="btn red">
+                         Cancel
+                     </button>
+                </div>
+            </div>
+            <div class="portlet-body add">
+                <form name="addForm" novalidate class="form-horizontal form-row-seperated">
+
+                    <div class="form-body col-md-6 col-sm-12">
+
+                        <div class="form-group clearfix clearfix">
+                            <label class="control-label col-sm-12 col-md-3">{{'users.username'|translate}}:</label>
+                            <div class="col-sm-12 col-md-9">
+                                <input type="text" placeholder="{{'users.username'|translate}}" class="form-control" ng-model="user.UserName" ng-change="isNamevalid(user.UserName)" name="userName" required />
+                                <p class="font-red-mint error" ng-show="hasError('userName', 'required' )">{{'users.username_required'|translate}}</p>
+                                <p class="font-red-mint has-error" ng-show="validName">UserName is duplicated</p>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="control-label col-sm-12 col-md-3">{{'users.fullname'|translate}}:</label>
+                            <div class="col-sm-12 col-md-9">
+                                <input type="text" placeholder="{{'users.fullname'|translate}}" class="form-control" ng-model="user.FullName" name="fullName" required />
+                                <p class="font-red-mint error" ng-show="hasError('fullName', 'required' )">{{'users.fullname_required'|translate}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="control-label col-sm-12 col-md-3">{{'users.password'|translate}}:</label>
+                            <div class="col-sm-12 col-md-9">
+                                <input type="password" placeholder="{{'users.password'|translate}}" class="form-control" ng-model="user.UserPassword" name="password" autocomplete="new-password" required />
+                                <p class="font-red-mint error" ng-show="hasError('password', 'required' )">{{'users.password_required'|translate}}</p>
+
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="control-label col-sm-12 col-md-3">{{'users.user_role'|translate}}</label>
+                            <div class="col-sm-12 col-md-9">
+                                <select name="roleName" class="form-control form-filter input-md" ng-model="user.RoleID" ng-options="role.RoleID as role.RoleName for role in rolesList" required>
+                                 <option value="">Select Role</option>
+                                 </select>
+                                <p class="font-red-mint error" ng-show="hasError('roleName', 'required')">Role is required</p>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="control-label col-sm-12 col-md-3">School: </label>
+                            <div class="col-sm-12 col-md-9">
+                                <select name="school" class="form-control form-filter input-md" ng-disabled="disableSchool" ng-model="user.SchoolId" ng-options="school.SchoolId as school.SchoolName for school in schools">
+                                 <option value="">All school</option>
+                        </select>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="control-label col-sm-12 col-md-3">{{'users.active'|translate}}:</label>
+                            <div class="col-sm-12 col-md-9">
+                                <div class="input-group" style="width: 75%;display: inline-block;">
+                                    <label class="control control--checkbox no-leftMargin sibling-check">
+                                        
+                                        <input type="checkbox" name="active" ng-model="user.IsActive"   ng-click="changeRight(right.RightID)" ng-checked=user.IsActive>
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="clear:both;"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

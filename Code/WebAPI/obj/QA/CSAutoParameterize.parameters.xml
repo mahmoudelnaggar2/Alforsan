@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DBEntities-Web.config Connection String" description="DBEntities Connection String used in web.config by the application to access the database." defaultValue="Data Source=mainserver;Initial Catalog=ForsanStudentAffairs_Test;User ID=sa;Password=Orien123;Application Name=DBEntities;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Projects\\ForsanStudentAffairs\\Code\\WebAPI\\obj\\QA\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DBEntities']/@connectionString" />
+  </parameter>
+</parameters>

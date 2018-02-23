@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{68A2B824-CDC1-43C3-B2C7-01AA88E9D7E5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Data.Repositories</RootNamespace>
+    <AssemblyName>Data.Repositories</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <OutputPath>bin\QA\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Production|AnyCPU'">
+    <OutputPath>bin\Production\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Contracts\ICustodyRepository.cs" />
+    <Compile Include="Contracts\IDiscountsTypeRepository.cs" />
+    <Compile Include="Contracts\IEmergencyRepository.cs" />
+    <Compile Include="Contracts\IFeesTypeRepository.cs" />
+    <Compile Include="Contracts\IGenderRepository.cs" />
+    <Compile Include="Contracts\IInterviewStatusRepository.cs" />
+    <Compile Include="Contracts\IStudentLanguageRepository.cs" />
+    <Compile Include="Contracts\ILanguageRepository.cs" />
+    <Compile Include="Contracts\INationalityRepository.cs" />
+    <Compile Include="Contracts\IParentRepository.cs" />
+    <Compile Include="Contracts\IReligionRepository.cs" />
+    <Compile Include="Contracts\IRoleRepository.cs" />
+    <Compile Include="Contracts\IRoleRightRepository.cs" />
+    <Compile Include="Contracts\IGradeRepository.cs" />
+    <Compile Include="Contracts\ISchoolRepository.cs" />
+    <Compile Include="Contracts\ISettingRepository.cs" />
+    <Compile Include="Contracts\ISiblingRepository.cs" />
+    <Compile Include="Contracts\IStudentFinancialRepository.cs" />
+    <Compile Include="Contracts\IStudentRepository.cs" />
+    <Compile Include="Contracts\IStudentStatusRepository.cs" />
+    <Compile Include="Contracts\IStudentVoucherDetailsRepository.cs" />
+    <Compile Include="Contracts\IStudentVoucherRefundRepository.cs" />
+    <Compile Include="Contracts\IStudentVoucherRepository.cs" />
+    <Compile Include="Contracts\IUserRepository.cs" />
+    <Compile Include="Contracts\IParentStatusRepository.cs" />
+    <Compile Include="Contracts\IVoucherTypeRepository.cs" />
+    <Compile Include="Contracts\IYearRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CustodyRepository.cs" />
+    <Compile Include="Repositories\DiscountsTypeRepository.cs" />
+    <Compile Include="Repositories\EmergencyRepository.cs" />
+    <Compile Include="Repositories\FeesTypeRepository.cs" />
+    <Compile Include="Repositories\GenderRepository.cs" />
+    <Compile Include="Repositories\InterviewStatusRepository.cs" />
+    <Compile Include="Repositories\StudentLanguageRepository.cs" />
+    <Compile Include="Repositories\LanguageRepository.cs" />
+    <Compile Include="Repositories\NationalityRepository.cs" />
+    <Compile Include="Repositories\ParentRepository.cs" />
+    <Compile Include="Repositories\ParentStatusRepository.cs" />
+    <Compile Include="Repositories\ReligionRepository.cs" />
+    <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\RoleRightRepository.cs" />
+    <Compile Include="Repositories\SchoolRepository.cs" />
+    <Compile Include="Repositories\SettingRepository.cs" />
+    <Compile Include="Repositories\SiblingRepository.cs" />
+    <Compile Include="Repositories\StudentFinancialRepository.cs" />
+    <Compile Include="Repositories\StudentRepository.cs" />
+    <Compile Include="Repositories\StudentStatusRepository.cs" />
+    <Compile Include="Repositories\GradeRepository.cs" />
+    <Compile Include="Repositories\StudentVoucherDetailsRepository.cs" />
+    <Compile Include="Repositories\StudentVoucherRefundRepository.cs" />
+    <Compile Include="Repositories\StudentVoucherRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Repositories\VoucherTypeRepository.cs" />
+    <Compile Include="Repositories\YearRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data.Infrastructure\Data.Infrastructure.csproj">
+      <Project>{54cabe59-0472-4b52-b4fb-46321f2cf2d8}</Project>
+      <Name>Data.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{08897ca4-ba42-453e-8603-2174815b5904}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{ef57bb24-8a46-451f-acda-6b96a6984f4a}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

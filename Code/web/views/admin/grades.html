@@ -1,0 +1,63 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+
+            <div class="portlet-title">
+                <div class="caption caption-md">
+                    <i class="icon-book-open font-red-mint" aria-hidden="true"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint">
+                        Grades
+
+                    </span>
+                </div>
+                <div class="actions">
+                    <select class="table-group-action-input form-control input-inline input-small input-sm" ng-disabled="disableSchool" ng-model="selectSchool" name="selectSchool" id="selectSchool" ng-change="filterList()" required>
+                           <option value="" selec>---All--</option> 
+                        <option ng-repeat="x in schoolData" value="{{x.SchoolId}}">{{x.SchoolName}}</option>            
+                    </select>
+
+
+                    <a href="#/pages/grade_add" class="btn btn-circle btn-info">
+                        <i class="fa fa-plus"></i>
+                        <span class="hidden-xs"> Add New </span>
+                    </a>
+
+                </div>
+            </div>
+
+
+
+            <div class="portlet-body">
+
+
+
+
+                <table ng-table="gradesTable" class="table">
+                    <tr ng-repeat="grade in grades">
+                        <td data-title="'Name'" sortable="'GradeName'">
+                            {{grade.GradeName}}
+                        </td>
+                        <td data-title="'School'" sortable="'School.SchoolName'">
+                            {{grade.School.SchoolName}}
+                        </td>
+                        <td data-title="'Order'" sortable="'Order'">{{grade.Order}}</td>
+                        <td data-title="'Action'">
+
+                            <div class="action_hover_container stretch_btn_heights narrow_buttons">
+                                <a href="javascript:;" class="btn btn-outline btn-circle dark btn-sm black" ng-click="editGrade(grade.GradeId)">
+                                    <i class="fa fa-edit"></i> Edit
+                                </a>
+
+                                <a href="javascript:;" class="btn btn-outline btn-circle dark btn-sm black" ng-click="deleteGrade(grade.GradeId,grade.GradeName)">
+                                    <i class="fa fa-trash-o"></i> Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>

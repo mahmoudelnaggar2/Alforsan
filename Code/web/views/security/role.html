@@ -1,0 +1,90 @@
+﻿<!-- BEGIN: ACCORDION DEMO -->
+<div class="portlet light  accordion-style">
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form ng-submit="save()" name="addForm" novalidate>
+
+                    <div class="row">
+                        <div class="col-xs-12  clearfix">
+                            <div class="portlet light">
+                                <div class="portlet-title tabbable-line">
+                                    <div class="caption caption-md">
+                                        <i class="fa fa-check-square-o font-red-mint" aria-hidden="true"></i>
+                                        <span class="caption-subject font-blue-madison bold uppercase font-red-mint">
+                                          {{pageTitle}}
+                                        </span>
+                                    </div>
+                                    <div class="actions btn-set pull-right">
+
+
+                                        <Button class="btn btn-info" ng-disabled="submitted" type="submit">
+                                            <i class="fa fa-check"></i>
+                                            <span class="hidden-xs">Save</span>
+                                        </Button>
+                                        <button ng-click="redirect()" type="button" class="btn red">
+                                            Cancel
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group clearfix col-xs-12 col-sm-6 noPad">
+                            <label class="control-label col-xs-12 col-sm-3 ">{{'roles.role_name'|translate}} :</label>
+                            <div class="col-xs-12 col-sm-9">
+                                <input type="text" placeholder="{{'roles.role_name'|translate}}" class="form-control" name="roleName" ng-model="role.RoleName" ng-change="isNamevalid(role.RoleName)" required />
+                                <p class="font-red-mint error" ng-show="hasError('roleName', 'required' )">
+                                    {{'roles.role_name_required'|translate}}
+                                </p>
+                                <p class="font-red-mint has-error" ng-show="validName && !hasError( 'roleName', 'required' )">Name is duplicated</p>
+                            </div>
+                        </div>
+                        <h3 class="font-red-thunderbird col-xs-12">Choose Role Rights</h3>
+                        <div class="tools tool col-xs-12 clearfix noPad">
+
+                            <label class="control control--checkbox sibling-check">
+                                Check All
+                                <input type="checkbox" name="language" value="all"  ng-click="checkAll($event)" ng-checked=checked>
+                                <div class="control__indicator"></div>
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <accordion close-others="true">
+
+                        <accordion-group is-open="status.open" ng-repeat="feature in FeaturesRights">
+                            <accordion-heading>
+                                {{feature.FeatureName}}
+                                <i class="pull-right fa fa-angle-down" ng-class="{'fa-angle-up': status.open, 'fa-angle-down': !status.open}"></i>
+                            </accordion-heading>
+                            <div class="col-md-4 col-sm-12 clerfix" ng-repeat="right in feature.Rights">
+                                <div class="col-sm-12 role-style clerfix">
+                                    <div class="input-group">
+
+                                        <label class="control control--checkbox sibling-check">
+                                            {{right.RightName}}
+                                            <input type="checkbox" name="language" value=" {{right.RightName}}" ng-click="changeRight(right.RightID)" ng-checked="getRightSelection(right.RightID)">
+                                            <div class="control__indicator"></div>
+                                        </label>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </accordion-group>
+
+                    </accordion>
+
+                    <div style="clear:both;"></div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: ACCORDION DEMO -->

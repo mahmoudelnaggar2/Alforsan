@@ -1,0 +1,164 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="portlet light">
+            <div class="portlet-title tabbable-line">
+                <div class="caption caption-xs">
+                    <i class="fa fa-pencil-square-o font-red-mint" aria-hidden="true"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint" ng-show="applicant.StudentCode==undefined">
+                        Admission Application
+                    </span>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint" ng-show="applicant.StudentCode!=undefined">
+                        Student Form
+                    </span>
+                </div>
+
+                <div class="actions btn-set">
+                    <button ng-click="back()" name="back" class="btn btn-secondary-outline">
+                        <i class="fa fa-angle-left"></i> Back
+                    </button>
+                    <button class="btn btn-secondary-outline" ng-click="reset()">
+                        <i class="fa fa-reply"></i> Reset
+                    </button>
+                    <button ng-click="save()" class="btn btn-success" ng-disabled="submitted">
+                        <i class="fa fa-check" aria-hidden="true"></i> Save
+                    </button>
+                    <button class="btn blue" id="setInterview" ng-click="finish()" ng-disabled="submitted">
+                        <i class="fa fa-calendar"></i> Save &amp; Finish
+                    </button>
+                    <!--show if applicant is student-->
+                    <!--hide if applicant is not suspended-->
+                    <button ng-click="isActivate(applicant.IsSuspend)" type="button" class="btn red" ng-hide="applicant.IsSuspend">
+                        suspend
+                    </button>
+                    <!--end hide if applicant is not suspended-->
+                    <!-- show if applicant is suspended-->
+                    <button ng-click="isActivate(applicant.IsSuspend)" type="button" class="btn green-haze" ng-show="applicant.IsSuspend">
+                        Activate
+                    </button>
+                    <button ng-click="downloadReport()" type="button" class="btn default">
+                        Print
+                    </button>
+                    <a href="#/pages/dashboard" class="btn red">
+                        Cancel
+                    </a>
+                    <!--end  show if applicant is suspended-->
+                    <!-- end show if applicant is student-->
+                </div>
+
+            </div>
+            <!--show if interview is not set-->
+            <!-- <div class="m-heading-1 border-blue m-bordered" ng-if="applicant.StudentStatusId==StudentStatus.WAITINGINTERVIEW">
+                <h3>Interview date is not set yet!</h3>
+                <p>
+                    The interview date for this student is not set yet.Please set the interview date
+                    <a class="btn blue" href=""><i class="fa fa-calendar"></i> Set interview Date</a>.
+                </p>
+            </div> -->
+            <!--end Toastr-->
+            <!--show if student is pending-->
+            <div class="m-heading-1 border-yellow-lemon m-bordered" ng-if="applicant.InterviewStatusId==InterviewStatus.PENDING">
+                <h3>This Student Status is Pending!</h3>
+            </div>
+            <!--end Toastr-->
+            <!--show if student is accepted-->
+            <div class="m-heading-1 border-green m-bordered" ng-if="applicant.InterviewStatusId==InterviewStatus.ACCEPTED">
+                <h3>This Student is Accepted!</h3>
+            </div>
+            <!--end Toastr-->
+            <!--show if student is rejected-->
+            <div class="m-heading-1 border-red m-bordered" ng-if="applicant.InterviewStatusId==InterviewStatus.REJECTED">
+                <h3>This Student is Rejected!</h3>
+            </div>
+
+            <!--for the steps 
+            class done will make the step green( the green step is the completed step)
+            class error will make the step red ( the red step is the current step )-->
+
+
+            <div class="mt-element-step" style="display:none;">
+                <div class="row step-line">
+                    <div class="col-md-3 mt-step-col first done" title="Application Fees">
+                        <div class="mt-step-number bg-white">
+                            <i class="fa fa-money"></i>
+                        </div>
+                        <div class="mt-step-title uppercase font-grey-cascade">Application Fees</div>
+                    </div>
+                    <div class="col-md-3 mt-step-col error" title="Application with Parent">
+                        <div class="mt-step-number bg-white">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div class="mt-step-title uppercase font-grey-cascade">Application with Parent</div>
+                    </div>
+                    <div class="col-md-3 mt-step-col" title="Application not entered">
+                        <div class="mt-step-number bg-white">
+                            <i class="fa fa-archive"></i>
+                        </div>
+                        <div class="mt-step-title uppercase font-grey-cascade">Application not Entered</div>
+                    </div>
+                    <div class="col-md-3 mt-step-col last" title="Form completed">
+                        <div class="mt-step-number bg-white">
+                            <i class="fa fa-check"></i>
+                        </div>
+                        <div class="mt-step-title uppercase font-grey-cascade">Form Completed</div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+            <!--end Toastr-->
+            <div class="portlet-body add">
+                <!-- <form name="addForm" novalidate class="form-horizontal form-row-seperated"> -->
+                <main>
+
+                    <input id="tab1" type="radio" name="tabs" ng-checked="tab1" ng-click="tabChange('1')">
+                    <label class="col-xs-3 col-md-2 clearfix" for="tab1">
+                            Basic Info
+                            <i ng-class="BasicForm.$valid?'fa fa-check':'fa fa-times'"></i>
+                        </label>
+
+                    <input id="tab2" type="radio" name="tabs" ng-if="BasicForm.$valid" ng-checked="tab2" ng-click="tabChange('2')">
+                    <label class="col-xs-3 col-md-2  clearfix" for="tab2">
+                            Additional Info
+                            <i ng-class="additionalForm.$valid?'fa fa-check':'fa fa-times'"></i>
+                        </label>
+
+
+                    <input id="tab3" type="radio" name="tabs" ng-if="BasicForm.$valid" ng-checked="tab3" ng-click="tabChange('3')">
+                    <label class="col-xs-3 col-md-2  clearfix" for="tab3">
+                            Family Info
+                            <i ng-class="FamilyForm.$valid?'fa fa-check':'fa fa-times'"></i>
+                        </label>
+
+                    <input id="tab4" type="radio" name="tabs" ng-if="BasicForm.$valid && FamilyForm.$valid&&additionalForm.$valid && isStudent" ng-checked="tab4" ng-click="tabChange('4')" ng-hide="isStudent">
+                    <label class="col-xs-3 col-md-2 clearfix" for="tab4" ng-show="isStudent">Interview</label>
+                    <div style="clear:both;"></div>
+
+                    <section id="content1" class="clearfix">
+                        <form name="BasicForm" novalidate class="form-horizontal form-row-seperated">
+                            <div data-ng-include="'views/applicant/admission_application/basicInfo_admission.html'"></div>
+                        </form>
+                    </section>
+
+                    <section id="content2">
+                        <form name="additionalForm" novalidate class="form-horizontal form-row-seperated">
+                            <div data-ng-include="'views/applicant/admission_application/additionalInfo_admission.html'"></div>
+                        </form>
+                    </section>
+                    <section id="content3">
+                        <form name="FamilyForm" novalidate class="form-horizontal form-row-seperated">
+                            <div data-ng-include="'views/applicant/admission_application/familyInfo-admission.html'"></div>
+                        </form>
+                    </section>
+                    <section id="content4">
+                        <div data-ng-include="'views/applicant/admission_application/interview_admission.html'"></div>
+                    </section>
+                </main>
+                <!-- </form> -->
+            </div>
+        </div>
+    </div>
+</div>

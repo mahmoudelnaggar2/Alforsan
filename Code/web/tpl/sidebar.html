@@ -1,0 +1,158 @@
+<div class="page-sidebar navbar-collapse collapse page-sidebar-fixed">
+
+    <div class="page-logo">
+        <a href="#/">
+            <img src="{{settings.layoutPath}}/img/logo-forsan.png" alt="logo" class="logo-default" />
+            <span>
+            {{'ForsanStudentAffairs_title'|translate}}
+           </span>
+        </a>
+
+    </div>
+
+
+    <!-- BEGIN SIDEBAR MENU -->
+    <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" ng-class="{'page-sidebar-menu-closed': settings.layout.pageSidebarClosed}">
+        <li class="sidebar-search-wrapper">
+            <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+            <!-- END RESPONSIVE QUICK SEARCH FORM -->
+        </li>
+        <!-- Static menu -->
+        <!--<li class="start nav-item">
+            <a href="#/pages/home">
+                <i class="icon-home"></i>
+                <span class="title">Home</span>
+            </a>
+        </li>-->
+        <!-- <li class="nav-item active open">
+            <div class="section_header_container">
+                <h2 id="direct_messages_header" class="section_header hoverable">
+                    Accounting
+                </h2>
+            </div>-->
+        <!--<a href="javascript:;" class="nav-link nav-toggle">
+            <i class="icon-user"></i>
+            <span class="title">Admin</span>
+            <span class="arrow"></span>
+        </a>-->
+        <!--<ul class="sub-menu">
+                <li>
+                    <a href="#/pages/new_applicant">
+                        <i class="icon-docs"></i>
+                        <span class="title">New Applicant</span>
+                    </a>
+                </li>
+
+
+            </ul>
+        </li>-->
+
+        <!--
+        <li class="nav-item active open">
+            <div class="section_header_container">
+                <h2 id="direct_messages_header" class="section_header hoverable" data-toggle="tooltip" title="" aria-label="Direct Messages" data-original-title="Open a Direct Message">Admin</h2>
+            </div>
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="icon-user"></i>
+                <span class="title">Admin</span>
+                <span class="arrow"></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="#/pages/schools">
+                        <i class="icon-graduation"></i>
+                        <span class="title">Schools</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/pages/grades">
+                        <i class="icon-book-open"></i>
+                        <span class="title">Grades</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/pages/fees_types">
+                        <i class="icon-credit-card"></i>
+                        <span class="title">Fees Types</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/pages/years">
+                        <i class="icon-calendar"></i>
+                        <span class="title">Years</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/pages/grade_fees">
+                        <i class="fa fa-money"></i>
+                        <span class="title">Grade Fees</span>
+                    </a>
+                </li>
+
+            </ul>
+        </li>-->
+        <!--
+        <li class="nav-item active open">
+            <div class="section_header_container">
+                <h2 id="direct_messages_header" class="section_header hoverable" data-toggle="tooltip" title="" aria-label="Direct Messages" data-original-title="Open a Direct Message">
+                    Students Affairs
+                </h2>
+            </div>
+            <ul class="sub-menu">
+                <li>
+                    <a href="#/pages/AdmissionApp">
+                        <i class="fa fa-pencil-square-o"></i>
+                        <span class="title">Admission Application</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/pages/transferToStudent">
+                        <i class="fa fa-graduation-cap"></i>
+                        <span class="title"> Transfer To Student</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/pages/upgradeStudents">
+                        <i class="fa fa-level-up"></i>
+                        <span class="title"> Upgrade Students</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/pages/issueVoucher">
+                        <i class="fa fa-file-text-o"></i>
+                        <span class="title">Issue Voucher</span>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+        
+        -->
+
+        <!-- End static menu -->
+
+
+        <li class="nav-item active open" ng-repeat="feature in features">
+            <!--<a href="javascript:;" class="nav-link nav-toggle">
+                <i class="{{feature.MenuIcon}}"></i>
+                <span class="title">{{feature.FeatureName}}</span>
+                <span class="arrow"></span>
+            </a>-->
+            <div class="section_header_container">
+                <h2 id="direct_messages_header" class="section_header hoverable" data-toggle="tooltip" title="" aria-label="Direct Messages" data-original-title="Open a Direct Message">{{feature.FeatureName}}</h2>
+            </div>
+            <ul class="sub-menu">
+                <li ng-repeat="right in feature.Rights">
+                    <a href="{{right.RightURL}}">
+                        <i class="{{right.MenuIcon}}"></i>
+                        <span class="title">{{right.RightName}}</span>
+                    </a>
+                </li>
+        </li>
+
+        </ul>
+        </li>
+
+    </ul>
+    <!-- END SIDEBAR MENU -->
+</div>

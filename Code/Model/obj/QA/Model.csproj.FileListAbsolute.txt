@@ -1,0 +1,4 @@
+E:\Projects\ForsanStudentAffairs\Code\Model\bin\QA\Model.dll
+E:\Projects\ForsanStudentAffairs\Code\Model\bin\QA\Helpers.dll
+E:\Projects\ForsanStudentAffairs\Code\Model\obj\QA\Model.csprojResolveAssemblyReference.cache
+E:\Projects\ForsanStudentAffairs\Code\Model\obj\QA\Model.dll

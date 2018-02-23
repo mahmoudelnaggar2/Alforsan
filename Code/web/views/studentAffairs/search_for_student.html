@@ -1,0 +1,138 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+
+            <div class="portlet-title tabbable-line">
+                <div class="caption caption-md">
+                    <i class="fa fa-file-text-o font-red-mint" aria-hidden="true"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint">
+                        Search For Student
+                    </span>
+                </div>
+
+                <div class="actions btn-set">
+                    <button class="btn btn-secondary-outline red" ng-click="returnWithStudent()">
+                        <i class="fa fa-reply"></i> Back
+                    </button>
+
+
+                    <button type="submit" class="btn btn-success" ng-disabled="submitted" ng-click="searchforStudent(createForm.$valid)">
+                        <i class="fa fa-check" aria-hidden="true"></i> Search
+                    </button>
+
+
+
+
+
+                </div>
+
+            </div>
+
+            <div class="portlet-body add search-form">
+                <form ng-submit="save()" name="createForm" novalidate class="form-horizontal form-row-seperated">
+                    <div class="col-xs-12 voucherBorder">
+                        <div class="form-body col-xs-12 text-left">
+
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Student Status</label>
+                                <div class="col-md-9">
+                                    <div class="mt-radio-inline">
+
+                                        <label class="control control--radio">
+                                                Student
+                                                <input type="radio" data-ng-value="{{StudentStatus.STUDENT}}"  name="StudentStatus" data-ng-model="StudentStatusId">
+                                                <div class="control__indicator"></div>
+                                            </label>
+
+                                        <label class="control control--radio">
+                                                Applicant
+                                                <input type="radio" data-ng-value="{{StudentStatus.APPLICATIONFEES}}"  name="StudentStatus" data-ng-model="StudentStatusId">
+                                                <div class="control__indicator"></div>
+                                            </label>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group clearfix">
+                                <label class="col-xs-12 clearfix  control-label">
+                                    Student Name/Student Code/Application Number
+                                </label>
+                                <div class="col-xs-12">
+                                    <input type="text" class="form-control" name="name" placeholder="Student Name" ng-model="studentName">
+                                </div>
+                            </div>
+
+                            <div class="form-group clearfix">
+                                <label class="col-xs-12 control-label clearfix">
+                                   School
+                                </label>
+                                <div class="col-xs-12 clearfix search">
+                                    <select name="selectSchool" class="col-xs-12 table-group-action-input form-control input-inline input-md input-md" ng-disabled="disableSchool" ng-model="selectSchool" ng-change="chooseSchoolId()" ng-options="school.SchoolId as school.SchoolName for school in schoolData"
+                                        >
+                                     <option value="" selected="selected">Select School...</option>
+                                   </select>
+                                    <!--<select class="col-xs-12 table-group-action-input form-control input-inline input-md input-md" name="selectSchool" ng-model="selectSchool" ng-change="chooseSchoolId()" required>
+                                        <option value="" selected="selected">Select School...</option>
+                                       <option ng-repeat="school in schoolData" value="{{school.SchoolId}}">{{school.SchoolName}}</option>   
+                                    </select>-->
+                                    <p class="font-red-mint has-error" ng-show="hasError('selectSchool', 'required')"> School is required</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group clearfix">
+                                <label class="col-xs-12 control-label clearfix">
+                                    Grade
+                                </label>
+                                <div class="col-xs-12 clearfix search ">
+                                    <select class="col-xs-12 table-group-action-input form-control input-inline input-md input-md" ng-model="selectGrade" ng-change="searchforStudent()">
+                                        <option value="" selected="selected">Select Grade...</option>
+                                        <option ng-repeat="grade in gradeData" value="{{grade.GradeId}}">{{grade.GradeName}}</option>  
+                                    </select>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="portlet-body add">
+                        <h3 class="font-red-thunderbird ">Students List</h3>
+                        <table ng-table="studentTable" class="table">
+                            <tr ng-repeat="student in students" ng-click="setStudent(student)">
+                                <td data-header="'Select'">
+                                    <label class="control control--radio student-check">
+                                        <input type="radio" name="chooseStudent" id="chooseStudent" ng-model="selectStudent">
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                </td>
+                                <td data-title="'Student Code'" sortable="'StudentCode'">{{student.StudentCode}}</td>
+                                <td data-title="'Student Name'" sortable="'ApplicantName'">{{student.ApplicantName}}</td>
+                                <td data-title="'Application Number'" sortable="'ApplicationNo'">{{student.ApplicationNo}}</td>
+                                <td data-title="'Student Status'" sortable="'StudentStatus.StudentStatusName'">{{student.StudentStatus.StudentStatusName}}</td>
+                                <td data-title="'School'" sortable="'School.SchoolName'">{{student.School.SchoolName}}</td>
+                                <td data-title="'Grade'" sortable="'Grade.GradeName'">{{student.Grade.GradeName}}</td>
+                                <td data-title="'Joining Year'" sortable="'ApplicationNo'">{{student.JoiningYear.YearName}}</td>
+
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- <ui-select ng-model="sibling.SchoolId" theme="bootstrap" name="siblingSchool{{$index}}" id="siblingSchool" on-select="onSelected($item)" ng-required=siblingCheck>
+                           <ui-select-match placeholder="select... ">{{$select.selected.SchoolName}}
+                               <button type="button" class="clear" ng-click="clearSchool($event,$index)"> <span class="glyphicon glyphicon-remove"></span></button>
+                           </ui-select-match>
+                           <ui-select-choices repeat="school.SchoolId as school in schools | filter: {SchoolName:$select.search}">
+                               <div ng-bind-html="school.SchoolName | highlight: $select.search"></div>
+                           </ui-select-choices>
+                       </ui-select> -->
+<!--.hoices>
+</ui-select> -->.

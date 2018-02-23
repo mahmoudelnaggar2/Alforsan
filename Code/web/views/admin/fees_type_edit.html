@@ -1,0 +1,147 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+
+            <div class="portlet-title tabbable-line">
+                <div class="caption caption-md">
+                    <i class="icon-credit-card font-red-mint" aria-hidden="true"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint">
+                       {{pageTitle}}
+                    </span>
+                </div>
+
+                <div class="actions btn-set">
+                    <a name="back" type="button" class="btn btn-secondary-outline" href="#/pages/fees_types">
+                       Back
+                    </a>
+                    <button class="btn btn-secondary-outline" ng-click="reset()">
+                        <i class="fa fa-reply"></i> Reset
+                    </button>
+                    <button type="submit" class="btn btn-success" ng-click="save()" ng-disabled="submitted">
+                        <i class="fa fa-check" aria-hidden="true"></i> Save
+                    </button>
+                    <button class="btn btn-success" ng-click="continue()" ng-disabled="submitted">
+                        <i class="fa fa-check-circle"></i> Save &amp; Continue Edit
+                    </button>
+
+                    <button  name="cancel" class="btn red" ng-click="cancel()">
+                        Cancel
+                    </button>
+
+
+                </div>
+
+            </div>
+
+            <div class="portlet-body add">
+                <form name="addForm" novalidate class="form-horizontal form-row-seperated">
+
+                    <div class="form-body col-md-6 col-sm-12">
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                        Fee Name:
+                                        <span class="required"> * </span>
+                                    </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="feestypeName" placeholder="" ng-model="feestype.FeeName" ng-change="isNamevalid(feestype.FeeName)" required>
+                                <p class="font-red-mint has-error" ng-show="hasError( 'feestypeName', 'required' )">Fees name is required </p>
+                                <p class="font-red-mint has-error" ng-show="validName && !hasError( 'feestypeName', 'required' )">Name is duplicated</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Is Mandatory</label>
+                            <div class="col-md-9">
+                                <div class="mt-radio-inline">
+
+                                    <label class="control control--radio">
+                                                Yes
+                                                <input type="radio" data-ng-value="true"  name="IsMandatory" data-ng-model="feestype.IsMandatory">
+                                                <div class="control__indicator"></div>
+                                            </label>
+
+                                    <label class="control control--radio">
+                                                No
+                                                <input type="radio" data-ng-value="false"  name="IsMandatory" data-ng-model="feestype.IsMandatory">
+                                                <div class="control__indicator"></div>
+                                            </label>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Is Bank</label>
+                            <div class="col-md-9">
+                                <div class="mt-radio-inline">
+
+                                    <label class="control control--radio">
+                                                Yes
+                                                <input type="radio" data-ng-value="true" name="IsBank" data-ng-model="feestype.IsBank">
+                                                <div class="control__indicator"></div>
+                                            </label>
+
+                                    <label class="control control--radio">
+                                                No
+                                                <input type="radio" data-ng-value="false" name="IsBank" data-ng-model="feestype.IsBank">
+                                                <div class="control__indicator"></div>
+                                            </label>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Is Pay Once</label>
+                            <div class="col-md-9">
+                                <div class="mt-radio-inline">
+
+                                    <label class="control control--radio">
+                                                Yes
+                                                <input type="radio" data-ng-value="true"  name="IsPayOnce" data-ng-model="feestype.IsPayOnce">
+                                                <div class="control__indicator"></div>
+                                            </label>
+
+                                    <label class="control control--radio">
+                                                No
+                                                <input type="radio" data-ng-value="false"  name="IsPayOnce" data-ng-model="feestype.IsPayOnce">
+                                                <div class="control__indicator"></div>
+                                            </label>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Allow Discounts</label>
+                            <div class="col-md-9">
+                                <div class="mt-radio-inline">
+
+                                    <label class="control control--radio">
+                                        Yes
+                                        <input type="radio" data-ng-value="true" name="AllowDiscounts" data-ng-model="feestype.AllowDiscounts">
+                                        <div class="control__indicator"></div>
+                                    </label>
+
+                                    <label class="control control--radio">
+                                        No
+                                        <input type="radio" data-ng-value="false" name="AllowDiscounts" data-ng-model="feestype.AllowDiscounts">
+                                        <div class="control__indicator"></div>
+                                    </label>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

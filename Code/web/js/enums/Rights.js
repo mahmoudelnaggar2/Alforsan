@@ -1,0 +1,28 @@
+﻿enozomApp.constant('Rights', {
+    PUBLIC: 0,
+    NOTLOGGEDIN: -1,
+    ROLES: 1,
+    USERS: 2,
+    SCHOOLS: 3,
+    GRADES: 4,
+    FEESTYPES: 5,
+    YEARS: 6,
+    GRADEFEES: 7,
+    DASHBOARD: 8,
+    TRANSFERTOSTUDENT: 9,
+    UPGRADESTUDENT: 10,
+    ADMISSIONAPPLICATION: 11,
+    ISSUEVOUCHER: 12,
+    NEWAPPLICANT: 13,
+    INTERVIEWREPORTS: 14,
+    ADMISSIONREPORTS: 15,
+
+    Nationality: 22,
+    InterViews: 23,
+
+    NEWAPPLICANTSREPORT:60
+
+    //VOUCHERFULLREPORTS: 15,
+    //VOUCHERPRINTOUTREPORTS: 16
+     
+});

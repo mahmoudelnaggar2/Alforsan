@@ -1,0 +1,99 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+
+            <div class="portlet-title tabbable-line">
+                <div class="caption caption-md">
+                    <i class="icon-user font-red-mint" aria-hidden="true"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint" ng-show="displayTitle">
+                        Edit Grade
+                    </span>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint" ng-hide="displayTitle">
+                        Add Grade
+                    </span>
+                </div>
+
+                <div class="actions btn-set">
+                    <a href="#/pages/grades" name="back" class="btn btn-secondary-outline">
+                        <i class="fa fa-angle-left"></i> Back
+                    </a>
+                    <button class="btn btn-secondary-outline" ng-click="reset()">
+                        <i class="fa fa-reply"></i> Reset
+                    </button>
+                    <button type="submit" class="btn btn-success" ng-click="saveFun(createForm.$valid)" ng-disabled="isDisable">
+                        <i class="fa fa-check" aria-hidden="true"></i> Save
+                    </button>
+                    <button class="btn btn-success" ng-click="continueFun(createForm.$valid)" ng-disabled="isDisable">
+                        <i class="fa fa-check-circle"></i> Save &amp; Continue Edit
+                    </button>
+                    <button ng-click="redirect()" type="button" class="btn red">
+                         Cancel
+                     </button>
+
+                </div>
+
+            </div>
+
+            <div class="portlet-body ">
+                <form ng-submit="save()" name="createForm" id="createForm" novalidate class="form-horizontal form-row-seperated ng-pristine">
+
+                    <div class="form-body col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                        School:
+                                        <span class="required"> * </span>
+                                    </label>
+                            <div class="col-md-9">
+                                <select class="table-group-action-input form-control " ng-disabled="disableSchool" name="school" ng-model="Grade.SchoolId" ng-change="selectCheck()" required>
+                                        <option value="" selected="selected">--Select School--</option>
+                                         <option ng-repeat="x in schoolData" value="{{x.SchoolId}}">{{x.SchoolName}}</option>   
+                                        </select>
+                                <p class="font-red-mint has-error" ng-show="hasError('school', 'required')"> Choose School is required</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                        Name:
+                                        <span class="required"> * </span>
+                                    </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="gradeValid" placeholder="Enter Grade Name" ng-model="Grade.GradeName" ng-change="isGradeNameUnique()" required>
+                      
+                                    <p class="font-red-mint has-error" ng-show="hasError('gradeValid', 'required')"> Grade Name is required</p>
+                         
+                                     <div>
+                                        <p class="font-red-mint has-error" ng-show="gradeUniqueMessage"> Grade Name must be unique</p>
+                                    </div>
+                                </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                        Order:
+                                        <span class="required"> * </span>
+                                    </label>
+                            <div class="col-md-9">
+                                <input type="number" class="form-control" name="orderValid" placeholder="Enter Order Number" ng-model="Grade.Order" ng-min="1" ng-keyup="isPositiveNumber()" ng-change="isOrderUnique()" min="1" max="99999" required>
+                                <!--<input type="number" class="form-control" name="orderValid" placeholder="Enter Order Number" ng-model="Grade.Order" min="1" max="99999" required>-->
+                                <div>
+                                    <p class="font-red-mint has-error" ng-show="hasError('orderValid', 'required')"> Order is required</p>
+
+                                    <div ng-show="validOrder">
+                                        <p class="font-red-mint has-error" ng-show="isPositiveMessage && !hasError('orderValid', 'required') &&!orderUniqueMessage "> Not valid number!</p>
+                                        <p class="font-red-mint has-error" ng-show="orderUniqueMessage && !hasError('orderValid', 'required') && !isPositiveMessage "> Order must be unique</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="clear:both;"></div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

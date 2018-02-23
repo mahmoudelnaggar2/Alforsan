@@ -1,0 +1,89 @@
+﻿<label class="control control--checkbox sibling-check ">
+            Set Interview Date
+            <input type="checkbox" value="minimum" ng-model="interviewCheck" ng-click="checkInterview($event)">
+            <div class="control__indicator "></div>
+</label>
+
+<div class="form-body col-xs-12 noPad" ng-hide="!interviewCheck">
+    <div class=" formCard clearfix">
+        <h4>Interview Date</h4>
+        <div class="form-group clearfix col-xs-12">
+            <div class="col-xs-12 noPad clearfix">
+                <div class="col-xs-12 col-sm-6 form-element">
+
+                    <div class="col-md-10 noPad" ng-controller="CalenderController as calenderVM">
+                        <input type="text" class="form-control" uib-datepicker-popup="{{calenderVM.format}}" is-open="calenderVM.opened" min-date="calenderVM.minDate" datepicker-options="calenderVM.dateOptions" date-disabled="disabled(date, mode)" id="date-picker" readonly show-button-bar="false"
+                            ng-model='fromDate.date' style="width: 0;padding: 0;display: inline-block;border: none;float:left;" readonly />
+                        <input type='text' ng-value='fullDateTime()' class='points col-md-8 col-xs-8' readonly />
+
+                        <span class="input-group-btn disin col-xs-1 clearfix datebtn">
+                            <button type="button" class="btn btn-default" ng-click="calenderVM.open($event)">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                        <customtimepicker choices="calenderVM.options" selected="selectedOptions" hstep='calenderVM.hstep' mstep='calenderVM.mstep' ismeridian='calenderVM.ismeridian' ng-model="fromDate.date"></customtimepicker>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+ 
+
+    <!-- <div class=" formCard clearfix">
+        <h4>Fees</h4>
+        <div class="form-group clearfix col-xs-12">
+
+            <div class="col-sm-6 col-xs-12 noPad clearfix form-element">
+                <label class="col-xs-5 control-label">
+                   Date registration fees to be paid
+                  
+                </label>
+                <div class="col-xs-7  noPad">
+                    <p class="input-group">
+                        <input type="text" class="form-control" show-button-bar="false" datepicker-popup="{{format}}" ng-model="dt3" is-open="opened3" min-date="minDate" datepicker-options="dateOptions" ng-required="true"
+                               close-text="Close" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open3($event)">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 noPad clearfix form-element">
+                <label class="col-xs-5 control-label">
+                    Date school fees to be paid
+                  
+                </label>
+                <div class="col-xs-7  noPad">
+                    <p class="input-group">
+                        <input type="text" class="form-control" show-button-bar="false" datepicker-popup="{{format}}" ng-model="dt4" is-open="opened4" min-date="minDate" datepicker-options="dateOptions" ng-required="true"
+                               close-text="Close" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open4($event)">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div> -->
+    <!-- 
+    <div class=" formCard sigDiv clearfix form-element">
+        <h4> School Principal's Signature</h4>
+        <div class="form-group clearfix col-xs-12">
+
+
+            <div class="col-sm-6 col-xs-12 noPad clearfix">
+                <div class="col-xs-12">
+                    <input type="text" class="form-control" name="PrincipalSignature" placeholder="Signature" />
+                </div>
+            </div>
+        </div>
+
+    </div> -->
+</div>

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EF57BB24-8A46-451F-ACDA-6B96A6984F4A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Model</RootNamespace>
+    <AssemblyName>Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <OutputPath>bin\QA\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Production|AnyCPU'">
+    <OutputPath>bin\Production\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DTO\FilterModel.cs" />
+    <Compile Include="DTO\GradeFeeObjDto.cs" />
+    <Compile Include="DTO\GradeFeesDto.cs" />
+    <Compile Include="DTO\NewApplicantsDTO.cs" />
+    <Compile Include="DTO\PagedResult.cs" />
+    <Compile Include="DTO\ReportAdmissionDTO.cs" />
+    <Compile Include="DTO\PaidFeesDTO.cs" />
+    <Compile Include="DTO\ReportInterviewDTO.cs" />
+    <Compile Include="DTO\SettingDTO.cs" />
+    <Compile Include="DTO\StudentStatusDto.cs" />
+    <Compile Include="Enums\AdmissionFeeEnum.cs" />
+    <Compile Include="Enums\CustodyEnum.cs" />
+    <Compile Include="Enums\GenderEnum.cs" />
+    <Compile Include="Enums\InterviewStatusEnum.cs" />
+    <Compile Include="Enums\NationalityEnum.cs" />
+    <Compile Include="Enums\ParentStatusEnum.cs" />
+    <Compile Include="Enums\ReligionEnum.cs" />
+    <Compile Include="Enums\RoleEnum.cs" />
+    <Compile Include="Enums\SettingsEnum.cs" />
+    <Compile Include="Enums\StatusEnum.cs" />
+    <Compile Include="Enums\StudentStatusEnum.cs" />
+    <Compile Include="Enums\VoucherTypeEnum.cs" />
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\Custody.cs" />
+    <Compile Include="Models\DiscountsType.cs" />
+    <Compile Include="Models\Emergency.cs" />
+    <Compile Include="Models\Feature.cs" />
+    <Compile Include="Models\FeesType.cs" />
+    <Compile Include="Models\Gender.cs" />
+    <Compile Include="Models\Grade.cs" />
+    <Compile Include="Models\GradeFees.cs" />
+    <Compile Include="Models\InterviewStatus.cs" />
+    <Compile Include="Models\Language.cs" />
+    <Compile Include="Models\Nationality.cs" />
+    <Compile Include="Models\Parent.cs" />
+    <Compile Include="Models\ParentStatus.cs" />
+    <Compile Include="Models\Religion.cs" />
+    <Compile Include="Models\Right.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\RoleRight.cs" />
+    <Compile Include="Models\School.cs" />
+    <Compile Include="Models\Setting.cs" />
+    <Compile Include="Models\Sibling.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudentFinancial.cs" />
+    <Compile Include="Models\StudentLanguage.cs" />
+    <Compile Include="Models\StudentStatus.cs" />
+    <Compile Include="Models\StudentVoucher.cs" />
+    <Compile Include="Models\StudentVoucherDetails.cs" />
+    <Compile Include="Models\StudentVoucherRefund.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\VoucherType.cs" />
+    <Compile Include="Models\Year.cs" />
+    <Compile Include="Partials\FeesType.cs" />
+    <Compile Include="Partials\Student.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{54ba044a-9148-4625-868a-6add92e87a9c}</Project>
+      <Name>Helpers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

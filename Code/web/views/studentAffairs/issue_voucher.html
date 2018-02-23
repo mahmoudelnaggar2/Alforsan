@@ -1,0 +1,327 @@
+﻿<style>
+    .strike {
+  text-decoration: line-through;
+  color:red;
+}
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+
+            <div class="portlet-title tabbable-line">
+                <div class="caption caption-md">
+                    <i class="fa fa-file-text-o font-red-mint" aria-hidden="true"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint">
+                        Issue Voucher
+                    </span>
+                </div>
+                <div class="actions btn-set">
+                    <button type="submit" class="btn btn-success" ng-disabled="submitted" ng-click="generateVoucher()">
+                        <i class="fa fa-check" aria-hidden="true"></i> Generate Voucher
+                    </button>
+                    <button class="btn btn-secondary-outline red" ng-click="resetFun()">
+                        <i class="fa fa-reply"></i> Reset
+                    </button>
+                </div>
+            </div>
+
+            <div class="portlet-body add">
+                <form ng-submit="save()" name="addForm" novalidate class="form-horizontal form-row-seperated">
+                    <div class="col-xs-12 voucherBorder">
+                        <div class="form-body col-sm-6 col-xs-12">
+
+                            <div class="form-group">
+                                <label class="col-xs-12 col-sm-3 control-label">
+                                Student Code
+                            </label>
+                                <div class="col-xs-12 col-sm-6">
+                                    <input type="text" class="form-control" name="number" placeholder="Code" ng-model="student.StudentCode" ng-keydown="keypress($event)">
+                                </div>
+                                <div class=" col-xs-12 col-sm-3 ">
+                                    <button type="button" class="btn btn-md green btn-outline filter-submit margin-bottom " ng-click="OpenPopupWindow()">
+                                    <i class="fa fa-search "></i> Search
+                                </button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-body col-sm-6 col-xs-12 ">
+                            <div class="form-body col-sm-8 col-xs-12 ">
+                                <h4>{{student.ApplicantName}}</h4>
+                                <h5><span>{{student.School.SchoolName}}</span> - <span>{{student.Grade.GradeName}}</span></h5>
+                                <h6>Joined on : {{student.JoiningYear.YearName}}</h6>
+
+                            </div>
+                            <div class="form-body col-sm-4 col-xs-12 text-center balance ">
+                                <h3><b>{{balance|number}}</b></h3>
+                                <h4>Balance</h4>
+                            </div>
+                        </div>
+                        <p class="font-red-mint has-error " ng-show="balance<0 && GenerateBtn">You can't generate new voucher until payed the last one</p>
+                        <p class="font-red-mint has-error " ng-show="selectFeeMessage && balance==0 && GenerateBtn">You should select at least one fee</p>
+                        <p class="font-red-mint has-error " ng-show="balance>0">You can't generate new voucher until deliver the last refund</p>
+                    </div>
+                    <div style="clear:both;"></div>
+
+                    <div class="form-body col-xs-12 col-sm-3 ">
+                        <h3 class="font-red-thunderbird">Year</h3>
+                        <select name="YearId" class="form-control form-filter input-md" ng-change="FeeStudentVoucherValidation()" required ng-model="studentVoucher.YearId" ng-options="year.YearId as year.YearName for year in years">
+                            <option value="">Select..</option>
+                        </select>
+                        <p class="font-red-mint error " ng-show="hasAddError( 'YearId', 'required' )">Study Year is required</p>
+                    </div>
+                             <div class="form-body col-sm-12 col-xs-12 voucherBorder">
+                            <h3 class="font-red-thunderbird">Fees</h3>
+                            <div class="col-xs-12 col-sm-6" ng-repeat="feetype in feeTypes">
+                                <label style="text-decoration:line-through" ng-show="feetype.FeesType.AllowDiscounts ==true && student.DiscountsType.DiscountPercentage!=null" class="control control--checkbox sibling-check" uib-tooltip-html="feetype.FeesType.IsPaid ? 'This fees has already paid' : ''">
+                                    {{feetype.FeesType.FeeName}} <span>({{feetype.Fee|number}})</span><span> LE </span>
+                                    <input type="checkbox" name="fees" ng-model="selectFeeList[feetype.FeesTypeId]" ng-click="calculateTotal($event,feetype.Fee,feetype.FeesTypeId,feetype.FeesType.AllowDiscounts,student.DiscountsType.DiscountPercentage)" ng-if="feetype.FeesType.FeesTypeId!=FeesType.ADMISSIONFEES&&isPaid" ng-disabled="feetype.FeesType.IsPaid">
+                                    <div class="control__indicator"></div>
+                                    <label>({{feetype.Fee - (feetype.Fee*(student.DiscountsType.DiscountPercentage/100))|number}}) LE</label>
+                                </label>
+                                <label ng-show="feetype.FeesType.AllowDiscounts ==false || student.DiscountsType.DiscountPercentage==null" class="control control--checkbox sibling-check" uib-tooltip-html="feetype.FeesType.IsPaid ? 'This fees has already paid' : ''">
+                                    {{feetype.FeesType.FeeName}} <span>({{feetype.Fee|number}})</span><span>  LE </span>
+                                    <input style="text-decoration:line-through" type="checkbox" name="fees" ng-model="selectFeeList[feetype.FeesTypeId]" ng-click="calculateTotal($event,feetype.Fee,feetype.FeesTypeId,feetype.FeesType.AllowDiscounts,student.DiscountsType.DiscountPercentage)" ng-disabled="feetype.FeesType.IsPaid">
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </div>
+                            <div class="col-xs-12 total">
+                                <h3 class="font-blue">Total : <b>{{studentVoucher.TotalVoucher}}</b></h3>
+                            </div>
+                        </div>
+                    <div style="clear:both;"></div>
+                </form>
+            </div>
+
+
+            <div class="portlet-body add voucher-list">
+                <h3 class="font-red-thunderbird ">Vouchers List</h3>
+                <table ng-table="vouchertable" class="table">
+                    <tr ng-repeat="voucher in voucherList">
+                        <td data-title="'Voucher.no'" >{{voucher.StudentVoucherId}}</td>
+                        <td data-title="'Year '">{{voucher.Year.YearName}}</td>
+                        <td data-title="'Voucher Date'">{{voucher.VoucherDate|date:'d/M/yyyy'}}</td>
+                        <!--<td data-title="'Amount'">{{voucher.TotalVoucher/((100-student.DiscountsType.DiscountPercentage)/100)|number}}</td>  
+                        <td data-title="'Discount'">{{student.DiscountsType.DiscountPercentage|number}} %</td>-->
+                        <td data-title="'Amount'">{{voucher.TotalVoucher|number}} LE</td>
+                        <td data-title="'Is Paid'">
+                        
+                         <i class="fa fa-check font-green-haze" aria-hidden="true" ng-show="{{voucher.IsPaid}}"></i>
+                            <i class="fa fa-sticky-note font-green-haze" style="cursor: pointer;" aria-hidden="true" ng-show="{{voucher.IsPaid}}" ng-click="displayPaymentNotes(voucher)"></i>
+                        
+                         <i class="fa fa-times font-red-thunderbird" aria-hidden="true" ng-hide="{{voucher.IsPaid}}"></i></td>
+
+                        <td data-title="'Actions'">
+                            <div class="action_hover_container stretch_btn_heights narrow_buttons">
+                                <a href="javascript:;" class="btn btn-outline btn-circle  yellow-lemon btn-sm " ng-click="pay(voucher.StudentVoucherId)" ng-hide="{{voucher.IsPaid}}" data-toggle="modal" data-target="#payModel">
+                                    <i class="fa fa-money" aria-hidden="true"></i> Pay
+                                </a>
+                                <a href="javascript:;" class="btn btn-outline btn-circle  btn-success btn-sm " ng-click="refund(voucher.StudentVoucherId,voucher.TotalVoucher)" ng-hide="!{{voucher.IsPaid}} || {{voucher.TotalVoucherRefund}}!=0" data-toggle="modal" data-target="#refundModel">
+                                    <i class="fa fa-share" aria-hidden="true"></i> Refund
+                                </a>
+                                <a href="javascript:;" class="btn btn-outline btn-circle  red btn-sm " ng-click="deleteVoucher(voucher)" ng-hide="{{voucher.IsPaid}}">
+                                    <i class="fa fa-share" aria-hidden="true"></i> Delete
+                                </a>
+                                <h4 ng-if="refunded">Refunded</h4>
+                            </div>
+                        </td>
+                      <td><a href="javascript:;" class="btn btn-success " ng-click="downloadReport(voucher.StudentVoucherId)">Print</a></td>
+                    </tr>
+                </table>
+
+                
+
+            </div>
+            <div class="portlet-body add voucher-list">
+                <h3 class="font-red-thunderbird ">Refund List</h3>
+                <table ng-table="refundtable" class="table">
+                    <tr ng-repeat="refund in refundList">
+                        <td data-title="'Refund.no'">{{refund.StudentVoucherRefundId}}</td>
+                        <td data-title="'Voucher no'">{{refund.StudentVoucherId}}</td>
+                        <td data-title="'Refund Date'">{{refund.VoucherRefundDate|date:'d/M/yyyy'}}</td>
+                        <td data-title="'Amount'">{{refund.TotalRefund|number}}</td>
+                        <td data-title="'Is Delivery'"><i class="fa fa-check font-green-haze" aria-hidden="true" ng-show="{{refund.IsPaid}}"></i> <i class="fa fa-times font-red-thunderbird" aria-hidden="true" ng-hide="{{refund.IsPaid}}"></i></td>
+                        <td data-title="'Actions'">
+                            <div class="action_hover_container stretch_btn_heights narrow_buttons">
+                                <a href="javascript:;" class="btn btn-outline btn-circle  yellow-lemon btn-sm " ng-click="delivery(refund.StudentVoucherRefundId)" ng-hide="{{refund.IsPaid}}" data-toggle="modal" data-target="#deliveryRefundModel">
+                                    <i class="fa fa-money" aria-hidden="true"></i> Delivery
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="payModel" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3>Pay Voucher</h3>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">
+                    Select Date
+                    <span class="required"> * </span>
+                </label>
+                        <div class="input-group col-md-9" ng-controller="CalenderController as calenderVM">
+                            <input type="text" class="form-control" show-button-bar="false" datepicker-popup="{{calenderVM.format}}" ng-model="studentVoucher.PaymentDate" is-open="calenderVM.opened" min-date="calenderVM.minDate" datepicker-options="calenderVM.dateOptions" ng-required="true"
+                                close-text="Close" />
+                            <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="calenderVM.open($event)">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">
+                           Notes
+                         </label>
+                        <div class="input-group col-md-9" >
+                            <input type="text" class="form-control"  ng-model="studentVoucher.Notes"  name="Notes" />
+                         
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn blue" value="Submit" ng-click="paySubmit()" ng-disabled="submitted" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="refundModel" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3>Pay Voucher</h3>
+            </div>
+            <form name="voucherForm" novalidate>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">
+                            Refund Date
+                            <span class="required"> * </span>
+                        </label>
+                        <div class="input-group col-md-9" ng-controller="CalenderController as calenderVM">
+                            <input type="text" class="form-control" show-button-bar="false" datepicker-popup="{{calenderVM.format}}" ng-model="studentRefund.VoucherRefundDate" is-open="calenderVM.opened" min-date="calenderVM.minDate" datepicker-options="calenderVM.dateOptions" ng-required="true"
+                                close-text="Close" ng-keyup="isValidRefund()" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="calenderVM.open($event)">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label class="col-md-3 control-label">
+                            Amount
+                            <span class="required"> * </span>
+                        </label>
+                        <div class="input-group  col-md-9">
+                            <input type="number" class="form-control" name="amount" placeholder="Amount" ng-model="studentRefund.TotalRefund" min="0" max="250000" ng-keyup="isValidRefund()" required>
+                            <p class="font-red-mint error" ng-show="hasError('amount', 'required')">Amount is required</p>
+                            <p class="font-red-mint error" ng-show="hasError('amount','min')">Amount must be great than 0</p>
+                            <p class="font-red-mint error" ng-show="hasError('amount','max')">Amount must be less than this number</p>
+                            <p class="font-red-mint error" ng-show="isValidRefund()">This refund exceed the voucher value</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn blue" value="Submit" ng-click="refundSubmit(voucherForm.$valid)" ng-disabled="submitted" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="paymentSummary" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3>Voucher Notes</h3>
+            </div>
+            
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">
+                            Payment Date
+                         </label>
+                        <div class="input-group col-md-9">
+                            <label class="col-md-9 control-label">
+                                {{SelectedVoucher.PaymentDate|date:'d/M/yyyy'}} 
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label class="col-md-3 control-label">
+                            Notes
+                        </label>
+                        <div class="input-group  col-md-9">
+                            {{SelectedVoucher.Notes}}
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+             
+        </div>
+    </div>
+</div>
+
+<div id="deliveryRefundModel" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3>Delivery Refund</h3>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">
+                            Select Date
+                            <span class="required"> * </span>
+                        </label>
+                        <div class="input-group col-md-9" ng-controller="CalenderController as calenderVM">
+                            <input type="text" class="form-control" show-button-bar="false" datepicker-popup="{{calenderVM.format}}" ng-model="studentRefund.PaymentDate" is-open="calenderVM.opened" min-date="calenderVM.minDate" datepicker-options="calenderVM.dateOptions" ng-required="true"
+                                close-text="Close" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="calenderVM.open($event)">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="btn blue" value="Submit" ng-click="deliverySubmit()" ng-disabled="submitted" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

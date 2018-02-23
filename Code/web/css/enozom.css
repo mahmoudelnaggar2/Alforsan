@@ -1,0 +1,121 @@
+﻿
+.page-container {
+    padding-top: 46px;
+}
+
+.ng-table th {
+    text-align: left;
+}
+
+
+ .section_header_container h2 {
+    text-align: left;
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+    margin: 15px 1rem 0.1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #AB9BA9;
+    /* width: 165px; */
+    position: relative;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #FFFFFF !important;
+    opacity: 0.6;
+}
+
+.page-sidebar .page-sidebar-menu .sub-menu li > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > a {
+    padding: 6px 15px 6px 15px;
+}
+
+
+
+
+
+.login {
+    background: #ececec;
+    text-align: center;
+}
+
+    .login div form {
+        margin-top: 20px;
+        background: white;
+        display: inline-block;
+        width: 100%;
+        max-width: 350px;
+        padding: 20px 40px 50px;
+    }
+
+        .login div form div {
+            margin-top: 8%;
+        }
+
+    .login div {
+    }
+
+.cont {
+    width: 100%;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.filter-btn {
+    margin-bottom: 10px;
+}
+
+.portlet > .portlet-title > .tools > a.expand {
+    background-image: none;
+    width: 80px;
+    visibility: visible;
+}
+
+.portlet > .portlet-title > .tool > a.collapse {
+    background-image: none;
+    width: 80px;
+    visibility: visible;
+}
+
+.portlet > .portlet-title > .tool > a {
+    display: inline-block;
+    height: 31px;
+    margin-left: 0px;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.portlet.light > .portlet-title > .tool {
+    padding: 10px 0 13px;
+    margin-top: 2px;
+    width: 80px;
+}
+
+.portlet > .portlet-title > .tool {
+    float: right;
+    display: inline-block;
+    padding: 12px 0 8px;
+}
+
+.tool {
+    float: left !important;
+}
+
+.portlet.light.bordered {
+    border: 0px solid #e7ecf1 !important;
+}
+
+.portlet.light {
+    padding: 0px 0px 0px;
+    background-color: #fff;
+}
+
+.portlet.bordered {
+    border-left: 0px solid #e6e9ec !important;
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown > .dropdown-toggle:last-child {
+    padding-right: 7px;
+}

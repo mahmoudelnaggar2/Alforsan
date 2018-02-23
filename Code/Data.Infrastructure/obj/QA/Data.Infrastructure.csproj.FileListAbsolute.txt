@@ -1,0 +1,15 @@
+E:\Projects\ForsanStudentAffairs\Code\Data.Infrastructure\bin\QA\Seed\ForsanSP.sql
+E:\Projects\ForsanStudentAffairs\Code\Data.Infrastructure\bin\QA\Data.Infrastructure.dll.config
+E:\Projects\ForsanStudentAffairs\Code\Data.Infrastructure\bin\QA\Data.Infrastructure.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Infrastructure\bin\QA\Data.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Infrastructure\bin\QA\EntityFramework.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Infrastructure\bin\QA\EntityFramework.SqlServer.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Infrastructure\bin\QA\Helpers.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Infrastructure\bin\QA\Model.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Infrastructure\bin\QA\PagedList.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Infrastructure\bin\QA\Data.Configuration.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Infrastructure\bin\QA\EntityFramework.xml
+E:\Projects\ForsanStudentAffairs\Code\Data.Infrastructure\bin\QA\EntityFramework.SqlServer.xml
+E:\Projects\ForsanStudentAffairs\Code\Data.Infrastructure\bin\QA\PagedList.xml
+E:\Projects\ForsanStudentAffairs\Code\Data.Infrastructure\obj\QA\Data.Infrastructure.csprojResolveAssemblyReference.cache
+E:\Projects\ForsanStudentAffairs\Code\Data.Infrastructure\obj\QA\Data.Infrastructure.dll

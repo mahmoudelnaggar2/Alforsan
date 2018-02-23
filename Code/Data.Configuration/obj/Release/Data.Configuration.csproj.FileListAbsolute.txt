@@ -1,0 +1,14 @@
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\Release\Data.Configuration.dll.config
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\Release\Data.Configuration.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\Release\Data.Configuration.pdb
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\Release\EntityFramework.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\Release\EntityFramework.SqlServer.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\Release\Model.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\Release\Helpers.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\Release\Model.pdb
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\Release\EntityFramework.xml
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\Release\EntityFramework.SqlServer.xml
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\Release\Helpers.pdb
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\obj\Release\Data.Configuration.csprojResolveAssemblyReference.cache
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\obj\Release\Data.Configuration.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\obj\Release\Data.Configuration.pdb

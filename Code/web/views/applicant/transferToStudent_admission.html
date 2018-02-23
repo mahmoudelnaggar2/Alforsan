@@ -1,0 +1,73 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title tabbable-line">
+                <div class="caption caption-md">
+                    <i class="fa fa-graduation-cap font-red-mint" aria-hidden="true"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint" ng-disabled="isDisabled">
+                        Transfer to Student
+                    </span>
+
+                </div>
+                <div class="actions btn-set pull-right">
+                    <select class="table-group-action-input form-control input-inline input-small input-sm" ng-disabled="disableSchool" ng-model="selectSchool" ng-change="chooseSchoolId()" ng-options="school.SchoolId as school.SchoolName for school in schoolData">
+                             <option value="">Select School...</option>
+                    </select>
+                    <select class="table-group-action-input form-control input-inline input-small input-sm" ng-model="selectGrade" ng-change="chooseGrade()">
+                        <option value="" selected="selected">Select Grade...</option>
+                         <option ng-repeat="grade in gradeData" value="{{grade.GradeId}}">{{grade.GradeName}}</option>    
+                    </select>
+                    <Button class="btn btn-info" ng-click="transferToStudent()" ng-disabled="isDisabled">
+                        <i class="fa fa-graduation-cap"></i>
+                        <span class="hidden-xs"> Transfer To Student</span>
+                    </Button>
+                    <button ng-click="redirect()" type="button" class="btn red">
+                        Cancel
+                    </button>
+                </div>
+
+            </div>
+            <p class="font-red-mint has-error" ng-show="checkflag">You should select at least one student</p>
+            <p class="font-red-mint has-error" ng-show="Selectflag && !checkflag ">You should select School and Grade</p>
+            <div class="portlet-body">
+
+
+                <script type="text/ng-template" id="checkboxheader.html">
+                    <label class="control control--checkbox student-check">
+                        <input type="checkbox" id="checkBoxAll"  ng-model="selectAll" name="checkBoxAll" ng-click="CheckAll($event)">
+                        <div class="control__indicator"></div>
+                    </label>
+                </script>
+                <table ng-table="ApplicantsTable" class="table applicant-table">
+                    <tr ng-repeat="applicant in applicants" ng-click="go(ai)" data-uib-tooltip-html="checkBalance(applicant.Balance)">
+                        <td data-header="'checkboxheader.html'">
+                            <label class="control control--checkbox student-check">
+                                <input type="checkbox" ng-model="selectList[applicant.StudentId]" ng-click="checkBoxClick($event)" ng-disabled="applicant.Balance!=0">
+                                <div class="control__indicator"></div>
+                            </label>
+                        </td>
+                        <td data-title="'Application no'">
+                            {{applicant.ApplicationNo}}
+                        </td>
+
+                        <td data-title="'Student Name'">
+                            {{applicant.FirstName}} {{applicant.MiddleName}} {{applicant.FamilyName}}
+                        </td>
+                        <td data-title="'Birth Date'">
+                            {{applicant.DateOfBirth|date:'d/M/yyyy'}}
+                        </td>
+                        <td data-title="'School '">
+                            {{applicant.School.SchoolName}}
+                        </td>
+                        <td data-title="'Grade '">
+                            {{applicant.Grade.GradeName}}
+                        </td>
+                        <td data-title=" 'Balance ' ">
+                            {{applicant.Balance}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

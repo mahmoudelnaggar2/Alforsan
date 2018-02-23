@@ -1,0 +1,66 @@
+﻿﻿<div class="loginBg"></div>
+<div class="page-md login">
+    <!--BEGIN SIDEBAR TOGGLER BUTTON-->
+    <div class="menu-toggler sidebar-toggler">
+    </div>
+    <!--END SIDEBAR TOGGLER BUTTON-->
+    <div class="cont">
+        <!--BEGIN LOGO-->
+        <div class="logoLogin">
+            <a href="index.html">
+                <img src="{{settings.layoutPath}}/img/logo-forsan.png" alt="forsan logo">
+            </a>
+        </div>
+        <!--END LOGO-->
+        <!--BEGIN LOGIN-->
+        <div class="content ">
+            <!--BEGIN LOGIN FORM-->
+            <form ng-submit="login()" name="Loginform" class="form-bordered ng-pristine ng-valid" novalidate ng-show='!forgotPass'>
+                <h3 class="form-title logintitle">
+                    <span class="form-title">Welcome.</span>
+                    <span class="form-subtitle">Please login.</span>
+                </h3>
+                <div class="alert alert-danger" ng-show="error">
+                    <span>
+                        {{'error'|translate}}
+                    </span>
+                </div>
+                <div class="form-group">
+                    <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                    <label class="control-label visible-ie8 visible-ie9">Email</label>
+                    <input id="username" type="text" placeholder="Email" name="email" class="form-control form-control-solid placeholder-no-fix" autocomplete="off" ng-model="username" required />
+                    <!--<span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">Email is required</span>-->
+                    <p class="font-red-mint has-error" ng-show="hasError( 'email', 'required' )">Email is required </p>
+                </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">Password</label>
+                    <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" ng-model="password" required />
+                    <!--<span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>-->
+                    <p class="font-red-mint has-error" ng-show="hasError( 'password', 'required' )">password is required </p>
+                </div>
+                <div class="form-actions" style="border-bottom: 0px;">
+                    <button ng-disabled="isDisabled" type="submit" class="btn red-thunderbird btn-block uppercase">Login</button>
+                </div>
+                <!--<a href="" class="login-links" ng-click="forgotPassFun()">Forgot Password?</a>-->
+            </form>
+            <form ng-submit="form.$valid && forgotPass()" name="form" class="form-bordered ng-pristine ng-valid" ng-show='forgotPass' novalidate>
+                <h3 class="form-title logintitle">
+                    <span class="form-subtitle">Please Enter your Email.</span>
+                </h3>
+                <div class="form-group clearfix">
+                    <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                    <label class="control-label visible-ie8 visible-ie9">Email</label>
+                    <input id="username" type="text" placeholder="Email" name="email" class="form-control form-control-solid placeholder-no-fix" autocomplete="off" ng-model="username" required />
+                    <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">Email is required</span>
+                </div>
+                <div class="form-actions" style="border-bottom: 0px;">
+                    <button ng-disabled="isDisabled" type="submit" class="btn red-thunderbird btn-block uppercase">Send</button>
+                </div>
+                <!--<a class="login-links" href="" ng-click="forgotPassFun()">Back to Login</a>-->
+            </form>
+        </div>
+    </div>
+    <div class="copyright hide">
+        Copyright &copy; 2017 - <a href="http://www.enozom.com" target="_blank"> Enozom Software</a> - All Rights Reserved.
+    </div>
+</div>

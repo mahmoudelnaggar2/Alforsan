@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<!-- 
+Template Name: enozom - Responsive Admin Dashboard Template
+Version: 1
+Author: Enozom
+Website: https://www.enozom.com
+Contact: hazem.torab@enozom.com
+Follow: https://twitter.com/Enozom
+Like: https://www.facebook.com/Enozom
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js" data-ng-app="enozomApp"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js" data-ng-app="enozomApp"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" data-ng-app="enozomApp">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+
+<head>
+    <title data-ng-bind="'Forsan-Student-Affairs | ' + $state.current.data.pageTitle"></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="assets/global/css/font.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link ng-if="lang === 'ar'" href="assets/layouts/layout/css/bootstrap.arabic.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN DYMANICLY LOADED CSS FILES(all plugin and page related styles must be loaded between GLOBAL and THEME css files ) -->
+    <link id="ng_load_plugins_before" />
+    <!-- END DYMANICLY LOADED CSS FILES -->
+    <!-- BEGIN THEME STYLES -->
+    <!-- DOC: To use 'rounded corners' style just load 'components-rounded.css' stylesheet instead of 'components.css' in the below style tag -->
+    <link href="assets/global/css/components.min.css" id="style_components" rel="stylesheet" type="text/css" />
+    <link href="assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+
+
+    <link href="assets/global/css/font-arabic.css" rel="stylesheet">
+
+    <link href="assets/global/plugins/angularjs/plugins/ui-select/select.min.css" rel="stylesheet" type="text/css" />
+
+
+    <link href="css/dropzone.css" rel="stylesheet" />
+    <link href="css/ng-dropzone.min.css" rel="stylesheet" />
+    <!-- ng-table -->
+    <link rel="stylesheet" href="css/ng-table.min.css" />
+   
+    <!-- ng-table 
+        <!-- multi-select -->
+    <link href="assets/global/plugins/multi-select/isteven-multi-select.css" rel="stylesheet" />
+    <!-- multi-select -->
+    <link rel="stylesheet" href="assets/global/css/date-range-picker.min.css" />
+
+    <link rel="stylesheet" href="assets/layouts/layout/css/themes/forsan-theme.css">
+    <link rel="stylesheet" href="assets/layouts/layout/css/themes/forsan-red-theme.css">
+    <link href="css/inputsStyle.css" rel="stylesheet" type="text/css" />
+    <link href="css/enozom.css" rel="stylesheet" type="text/css" />
+    <link href="assets/global/css/date-range-picker.min.css" rel="stylesheet" type="text/css" />
+    <link ng-if="lang === 'ar'" href="assets/layouts/layout/css/custom-ar.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico" />
+
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+
+<body>
+
+    <ui-view>
+
+    </ui-view>
+    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- BEGIN CORE JQUERY PLUGINS -->
+    <!--[if lt IE 9]>
+	<script src="assets/global/plugins/respond.min.js"></script>
+	<script src="assets/global/plugins/excanvas.min.js"></script> 
+	<![endif]-->
+    <script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
+    <!-- END CORE JQUERY PLUGINS -->
+    <!-- BEGIN CORE ANGULARJS PLUGINS -->
+    <script src="assets/global/plugins/angularjs/angular.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/angularjs/angular-sanitize.min.js" type="text/javascript"></script>
+    <!--<script src="assets/global/plugins/angularjs/angular-animate.js" type="text/javascript"></script>-->
+    <script src="assets/global/plugins/angularjs/angular-touch.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/angularjs/plugins/angular-ui-router.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/angularjs/plugins/ocLazyLoad.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/angularjs/plugins/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/angularjs/plugins/ui-select/select.min.js" type="text/javascript"></script>
+
+    <!-- ng-table -->
+
+    <script src="js/scripts/dropzone.js" type="text/javascript"></script>
+    <script src="js/scripts/ng-table.min.js" type="text/javascript"></script>
+    <script src="js/scripts/ng-file-upload.min.js"></script>
+    <script src="js/scripts/ng-dropzone.min.js"></script>
+    <!-- END CORE ANGULARJS PLUGINS -->
+    <!-- BEGIN APP LEVEL ANGULARJS SCRIPTS -->
+    <script src="js/translations/ar.js" type="text/javascript"></script>
+    <script src="js/translations/en.js" type="text/javascript"></script>
+    <script src="js/translations/en/roles-en.js" type="text/javascript"></script>
+    <script src="js/translations/ar/roles-ar.js" type="text/javascript"></script>
+    <script src="js/translations/en/users-en.js" type="text/javascript"></script>
+    <script src="js/translations/ar/users-ar.js" type="text/javascript"></script>
+    <script src="js/translations/translation.module.js" type="text/javascript"></script>
+    <script src="js/translations/translation.controller.js" type="text/javascript"></script>
+
+    <script src="assets/global/plugins/angularjs/angular-translate.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/angularjs/angular-cookies.min.js" type="text/javascript"></script>
+    <script src="assets/global/plugins/multi-select/isteven-multi-select.js" type="text/javascript"></script>
+
+
+    <script src="assets/global/scripts/moment.min.js"></script>
+    <script src="assets/global/scripts/date-range-picker.min.js"></script>
+    <script src="assets/global/scripts/angular-date-range-picker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.13/daterangepicker.min.js"></script>
+    <script src="http://fragaria.github.io/angular-daterangepicker/js/angular-daterangepicker.min.js"></script>
+    <script src="assets/global/scripts/date-range-picker.min.js"></script>
+
+    <!-- angular spinner -->
+
+    <script type="text/javascript" src="js/spin.min.js"></script>
+    <script src="js/angular-spinner.js"></script>
+    <script src="js/app.js" type="text/javascript"></script>
+    <script src="js/app.routings.js" type="text/javascript"></script>
+    <script src="js/enums/Rights.js" type="text/javascript"></script>
+    <script src="js/enums/StudentStatusEnum.js" type="text/javascript"></script>
+    <script src="js/enums/VoucherTypeEnum.js" type="text/javascript"></script>
+    <script src="js/enums/RoleEnum.js" type="text/javascript"></script>
+    <script src="js/app.configs.js" type="text/javascript"></script>
+    <script src="js/factories/global/RequestFactory.js" type="text/javascript"></script>
+    <script src="js/services/GridService.js" type="text/javascript"></script>
+    <script src="js/services/CalenderService.js" type="text/javascript"></script>
+    <script src="js/services/LanguageService.js" type="text/javascript"></script>
+    <script src="js/factories/global/LoginFactory.js" type="text/javascript"></script>
+    <script src="js/directives.js" type="text/javascript"></script>
+    <script src="js/directives/date-time-picker/time-date-directive.js" type="text/javascript"></script>
+    <script src="js/factories/global/GlobalFactory.js" type="text/javascript"></script>
+    <script src="js/factories/security/UsersFactory.js" type="text/javascript"></script>
+    <script src="js/factories/security/RolesFactory.js" type="text/javascript"></script>
+    <script src="js/factories/global/UploadFactory.js" type="text/javascript"></script>
+
+    <!-- END APP LEVEL ANGULARJS SCRIPTS -->
+    <!-- regx list -->
+    <script src="js/regularExpression.js"></script>
+    <!-- calender controller -->
+    <script src="js/controllers/global/calenderController.js"></script>
+    <!-- BEGIN APP LEVEL JQUERY SCRIPTS -->
+    <script src="assets/global/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
+    <script src="assets/global/scripts/ui-bootbox.min.js" type="text/javascript"></script>
+    <script src="assets/global/scripts/app.min.js" type="text/javascript"></script>
+    <script src="assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+    <script src="assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+
+    <!-- END APP LEVEL JQUERY SCRIPTS -->
+    <!-- File saver -->
+    <script src="assets/global/scripts/FileSaver.min.js"></script>
+    <!-- END File saver -->
+    <!-- END JAVASCRIPTS -->
+    <script src="js/scripts/ui-mask.js"></script>
+    <script src="js/scripts/script.js"></script>
+</body>
+<!-- END BODY -->
+
+</html>

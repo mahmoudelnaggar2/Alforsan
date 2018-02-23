@@ -1,0 +1,102 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+
+            <div class="portlet-title tabbable-line">
+                <div class="caption caption-md">
+                    <i class="icon-calendar font-red-mint" aria-hidden="true"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint" ng-show="displayTitle">
+                        Edit Year
+                    </span>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint" ng-hide="displayTitle">
+                        Add Year
+                    </span>
+                </div>
+
+                <div class="actions btn-set">
+                    <a href="#/pages/years" name="back" class="btn btn-secondary-outline">
+                        <i class="fa fa-angle-left"></i> Back
+                    </a>
+                    <button class="btn btn-secondary-outline" ng-click="reset()">
+                        <i class="fa fa-reply"></i> Reset
+                    </button>
+                    <button type="submit" class="btn btn-success" ng-click="save(createForm.$valid)" ng-disabled="isDisable">
+                        <i class="fa fa-check" aria-hidden="true"></i> Save
+                    </button>
+                    <button class="btn btn-success" ng-click="saveAndContinue(createForm.$valid)" ng-disabled="isDisable">
+                        <i class="fa fa-check-circle"></i> Save &amp; Continue Edit
+                    </button>
+                    <button ng-click="redirect()" type="button" class="btn red">
+                         Cancel
+                     </button>
+                </div>
+
+            </div>
+
+            <div class="portlet-body add">
+                <form ng-submit="save(createForm.$valid)" name="createForm" id="createForm" novalidate class="form-horizontal form-row-seperated">
+
+                    <div class="form-body col-md-6 col-sm-12">
+
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                        Year Name:
+                                        <span class="required"> * </span>
+                                    </label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="yearName" placeholder="Enter Year Name" ng-model="Year.YearName" ng-change="yearNameUnique()" pattern="[0-9]{4}/[0-9]{4}" title="example:2017/2016 " required>
+                                <p class="font-red-mint has-error" ng-show="hasError('yearName', 'required')"> Year Name is required</p>
+                                
+                                <div>
+                                    <p class="font-red-mint has-error" ng-show="hasError('yearName', 'pattern') && !hasError('yearName', 'required')"> Invalid Form! example: 2016/2017</p>
+                                    <p class="font-red-mint has-error" ng-show="yearNameUniqueMessage && !hasError('yearName', 'required')"> Year Name must be unique</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">
+                                        Short Name:
+                                        <span class="required"> * </span>
+                                    </label>
+                            <div class="col-md-9"> 
+                                <input type="number" class="form-control" name="shortName" ng-model="Year.ShortName" ng-init="checked=false" placeholder="Enter ShortName" ng-keyup="isPositiveNumber()" ng-change="shortNameUnique()" min="0" max="99999" required>
+                            
+                         
+                                    <p class="font-red-mint has-error" ng-show="hasError('shortName', 'required')"> Short Name is required</p>
+                          
+                                   <div> 
+                                    <p class="font-red-mint has-error" ng-show="isPositiveMessage && !hasError('shortName', 'required')"> Not valid positive number!</p>
+                                    <p class="font-red-mint has-error" ng-show="shortNameUniqueMessage && !isPositiveMessage"> Short Name must be unique</p>
+                                </div>
+                           </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Is Current</label>
+                            <div class="col-md-9">
+                                <div class="mt-radio-inline">
+                                    <p>
+                                        <input type="checkbox" id="test1" ng-model="Year.IsCurrent" name="isCurrent" ng-change="isCurrentCheck()" />
+                                        <label for="test1"></label>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+
+                    <div style="clear:both;"></div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

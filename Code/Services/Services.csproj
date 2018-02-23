@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B99E3CF1-3A2C-4260-962A-7773C4A632BC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Service</RootNamespace>
+    <AssemblyName>Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <OutputPath>bin\QA\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Production|AnyCPU'">
+    <OutputPath>bin\Production\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Stimulsoft.Base, Version=2010.3.900.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reports\Library\Stimulsoft.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Controls, Version=2010.3.900.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reports\Library\Stimulsoft.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Controls.Win, Version=2010.3.900.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reports\Library\Stimulsoft.Controls.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Database, Version=2010.3.900.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reports\Library\Stimulsoft.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Design, Version=2010.3.900.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reports\Library\Stimulsoft.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Editor, Version=2010.3.900.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reports\Library\Stimulsoft.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report, Version=2010.3.900.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reports\Library\Stimulsoft.Report.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Check, Version=2010.3.900.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reports\Library\Stimulsoft.Report.Check.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Design, Version=2010.3.900.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reports\Library\Stimulsoft.Report.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Helper, Version=2010.3.900.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reports\Library\Stimulsoft.Report.Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Web, Version=2010.3.900.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reports\Library\Stimulsoft.Report.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Win, Version=2010.3.900.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Reports\Library\Stimulsoft.Report.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Contracts\ICustodyService.cs" />
+    <Compile Include="Contracts\IDiscountsTypeService.cs" />
+    <Compile Include="Contracts\IEmergencyService.cs" />
+    <Compile Include="Contracts\IFeesTypeService.cs" />
+    <Compile Include="Contracts\IGenderService.cs" />
+    <Compile Include="Contracts\IInterviewStatusService.cs" />
+    <Compile Include="Contracts\ILanguageService.cs" />
+    <Compile Include="Contracts\INationalityService.cs" />
+    <Compile Include="Contracts\IParentService.cs" />
+    <Compile Include="Contracts\IParentStatusService.cs" />
+    <Compile Include="Contracts\IReligionService.cs" />
+    <Compile Include="Contracts\IRoleRightService.cs" />
+    <Compile Include="Contracts\IRoleService.cs" />
+    <Compile Include="Contracts\ISchoolService.cs" />
+    <Compile Include="Contracts\ISettingService.cs" />
+    <Compile Include="Contracts\ISiblingService.cs" />
+    <Compile Include="Contracts\IStudentFinancialService.cs" />
+    <Compile Include="Contracts\IStudentReportsService.cs" />
+    <Compile Include="Contracts\IStudentService.cs" />
+    <Compile Include="Contracts\IStudentStatusService.cs" />
+    <Compile Include="Contracts\IGradeService.cs" />
+    <Compile Include="Contracts\IStudentVoucherDetailsService.cs" />
+    <Compile Include="Contracts\IStudentVoucherRefundService.cs" />
+    <Compile Include="Contracts\IStudentVoucherService.cs" />
+    <Compile Include="Contracts\IUserService.cs" />
+    <Compile Include="Contracts\IVoucherTypeService.cs" />
+    <Compile Include="Contracts\IYearService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DiscountsTypeService.cs" />
+    <Compile Include="Services\GradeService.cs" />
+    <Compile Include="Services\CustodyService.cs" />
+    <Compile Include="Services\EmergencyService.cs" />
+    <Compile Include="Services\FeesTypeService.cs" />
+    <Compile Include="Services\GenderService.cs" />
+    <Compile Include="Services\InterviewStatuService.cs" />
+    <Compile Include="Services\LanguageService.cs" />
+    <Compile Include="Services\NationalityService.cs" />
+    <Compile Include="Services\ParentService.cs" />
+    <Compile Include="Services\ParentStatusService.cs" />
+    <Compile Include="Services\ReligionService.cs" />
+    <Compile Include="Services\RoleRightService.cs" />
+    <Compile Include="Services\RoleService.cs" />
+    <Compile Include="Services\SchoolService.cs" />
+    <Compile Include="Services\SettingService.cs" />
+    <Compile Include="Services\SiblingService.cs" />
+    <Compile Include="Services\StudentFinancialService.cs" />
+    <Compile Include="Services\StudentReportsService.cs" />
+    <Compile Include="Services\StudentService.cs" />
+    <Compile Include="Services\StudentStatusService.cs" />
+    <Compile Include="Services\StudentVoucherDetailsService.cs" />
+    <Compile Include="Services\StudentVoucherRefundService.cs" />
+    <Compile Include="Services\StudentVoucherService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\VoucherTypeService.cs" />
+    <Compile Include="Services\YearService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data.Infrastructure\Data.Infrastructure.csproj">
+      <Project>{54cabe59-0472-4b52-b4fb-46321f2cf2d8}</Project>
+      <Name>Data.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data.Repositories\Data.Repositories.csproj">
+      <Project>{68a2b824-cdc1-43c3-b2c7-01aa88e9d7e5}</Project>
+      <Name>Data.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{54ba044a-9148-4625-868a-6add92e87a9c}</Project>
+      <Name>Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mappers\Mappers.csproj">
+      <Project>{cbe2c1ab-45eb-46eb-aaff-10dbe89380cf}</Project>
+      <Name>Mappers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{ef57bb24-8a46-451f-acda-6b96a6984f4a}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

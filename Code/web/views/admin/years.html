@@ -1,0 +1,49 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title tabbable-line">
+                <div class="caption caption-md">
+                    <i class="icon-calendar font-red-mint" aria-hidden="true"></i>
+                    <span class="caption-subject font-blue-madison bold uppercase font-red-mint">
+                        Years
+                    </span>
+                </div>
+                <div class="actions">
+                    <a href="#/pages/year_add" class="btn btn-circle btn-info">
+                        <i class="fa fa-plus"></i>
+                        <span class="hidden-xs"> Add New </span>
+                    </a>
+
+                </div>
+            </div>
+            <div class="portlet-body">
+
+                <table ng-table="yearsTable" class="table">
+                    <tr ng-repeat="year in years">
+                        <td data-title="'Year Name'">
+                            {{year.YearName}}
+                        </td>
+                        <td data-title="'Short Name'">
+                            {{year.ShortName}}
+                        </td>
+                        <td data-title="'Is Current'">{{year.IsCurrent?'yes':'no'}}</td>
+                        <td data-title="'Action'">
+
+                            <div class="action_hover_container stretch_btn_heights narrow_buttons">
+                                <a href="javascript:;" class="btn btn-outline btn-circle dark btn-sm black" ng-click="editYear(year.YearId)">
+                                    <i class="fa fa-edit"></i> Edit
+                                </a>
+
+                                <a href="javascript:;" class="btn btn-outline btn-circle dark btn-sm black" ng-click="deleteYear(year.YearId,year.YearName)">
+                                    <i class="fa fa-trash-o"></i> Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>

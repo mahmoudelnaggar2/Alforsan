@@ -1,0 +1,7 @@
+E:\Projects\ForsanStudentAffairs\Code\Model\bin\Release\Model.dll
+E:\Projects\ForsanStudentAffairs\Code\Model\bin\Release\Model.pdb
+E:\Projects\ForsanStudentAffairs\Code\Model\bin\Release\Helpers.dll
+E:\Projects\ForsanStudentAffairs\Code\Model\bin\Release\Helpers.pdb
+E:\Projects\ForsanStudentAffairs\Code\Model\obj\Release\Model.csprojResolveAssemblyReference.cache
+E:\Projects\ForsanStudentAffairs\Code\Model\obj\Release\Model.dll
+E:\Projects\ForsanStudentAffairs\Code\Model\obj\Release\Model.pdb

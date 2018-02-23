@@ -1,0 +1,10 @@
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\QA\Data.Configuration.dll.config
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\QA\Data.Configuration.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\QA\EntityFramework.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\QA\EntityFramework.SqlServer.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\QA\Model.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\QA\Helpers.dll
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\QA\EntityFramework.xml
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\bin\QA\EntityFramework.SqlServer.xml
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\obj\QA\Data.Configuration.csprojResolveAssemblyReference.cache
+E:\Projects\ForsanStudentAffairs\Code\Data.Configuration\obj\QA\Data.Configuration.dll
